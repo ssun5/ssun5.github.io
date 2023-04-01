@@ -1,0 +1,28 @@
+# Site
+title:              ssun
+bio:                'Hello, I document my projects here. Please enjoy'
+description:        "online portfolio"
+locale:             en_US
+url: "https://ssun5.github.io" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+
+# Comments
+disqus_shortname:   default
+
+# Social
+analytics-id:       "default"
+twitter:            default
+facebook:           default
+instagram:          default
+github:             default
+
+# personal
+location:           Los Angeles, CA
+phone:              1 650 455 6484
+email:              yellowpurplebird@gmail.com # change this to your email to receive free emails for your contact submissions via Slapform.com
+
+gems:
+  - "jekyll-feed"
+  - "jekyll-seo-tag"
+  - "jekyll-paginate"
+  - "jekyll-sitemap"
