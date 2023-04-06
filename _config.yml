@@ -9,6 +9,9 @@ baseurl: "" # the subpath of your site, e.g. /blog
 # Comments
 disqus_shortname:   default
 
+# Google Analytics
+google_analytics: G-QMCF76SGXH
+
 # Social
 analytics-id:       "default"
 twitter:            default
