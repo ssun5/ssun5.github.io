@@ -40,7 +40,7 @@ Doing so allows us to observe its limit cycles more easily, especially because i
 
 After simulating over about 10,000 increments of \\\(\gamma \\\), ~300 steps for each value of \\\(\gamma \\\) it becomes evident in its plot that the states are indeed exhibiting bifurcation and chaotic behavior.
 
-Using MATLAB's plotting functions, we can interatively plot the points along the robot w.r.t the simulated system states. The resulting animation serves as a visual sanity check, providing confidence that the system has been modeled as intended.
+Using MATLAB's plotting functions, we can iteratively plot the points along the robot w.r.t the simulated system states. The resulting animation serves as a visual sanity check, providing confidence that the system has been modeled as intended.
 
 <a href="https://youtu.be/SqO2aBX_hxQ" data-poprox="youtube" class="fit image"><img src="/images/thumbs/CG_walk_0_7.jpg" /></a>
 
