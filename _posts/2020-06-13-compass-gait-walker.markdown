@@ -1,11 +1,12 @@
 ---
 layout: post
-title: 'Bifurcation & Chaos: Compass Gait Walker'
+title: 'Bifurcation & Chaos: Bipedal Compass Gait Walker'
 categories: 
 math: true
 date: '2020-06-13'
 ---
-<img src="/images/fulls/x1_orbit_fine_just4fun.png" class="fit image">
+<img id="Figure 1" src="/images/fulls/x1_orbit_fine_just4fun.png" class="fit image">
+<p><b>Figure 1</b></p>
 
 ### Intro ###
 
@@ -21,7 +22,8 @@ The system is modeled and simulated entirely within MATLAB computing environment
 
 Below is a sketch of the system we are interested in. The walker interacts with the environment with its two rigid, rectangular legs. It is allowed to traverse along a sloped surface, defined by road grade \\\(\gamma \\\) through passive dynamics (gravity only, no other control inputs). At any given moment, one leg is denoted as the "stance leg" and the other as the "swing leg". Corresponding states of the system are denoted by subscripts \\\(st \\\) & \\\(sw \\\), respectively.
 
-<img src="/images/fulls/cg_walker_sketch.jpeg" class="fit image">
+<img id="Figure 2" src="/images/fulls/cg_walker_sketch.jpeg" class="fit image">
+<p><b>Figure 2:</b> sketch of cg-walker</p>
 
 Additionally, Each leg of the robot has a center of mass (CoM) located by an offset \\\(B \\\) and \\\(C \\\), and the ends of the legs are radiused (radius: \\\(R \\\)), allowing the walker to roll its 'feet' along the ground upon impact. 
 
@@ -34,15 +36,48 @@ Contact and collision in the system is characterized by non-slip and no-bounce c
 
 ### Bifurcation ###
 
-In order to observe bifurcation of the system, the walker should be maintained such that it does not fall over. To achieve this, for each given iteration of the simulaiton, the robot is initiated at a starting state close to one of its attractors. 
+In order to observe bifurcation of the system, the walker should be maintained such that it does not fall over. If the robot were to fall over, its corresponding states likely do not belong to a limit-cycle we are interested in. 
 
-Doing so allows us to observe its limit cycles more easily, especially because it often takes some number of steps before the system begins to settle towards its attractors, and that to observe bifurcation, many more steps are required to observe the states overlapping over time. According to Strogatz, a good starting value to begin observing bifurcation is on the order of a few hundred cycles (~300).  
+To aid in observing its limit cycles, the robot begins its simulated walk at an inital state close to one of its attractors. Doing so helps to 1). ensure that the walker does not fall over during simulation and 2). reduce the number of simulated steps required before periodic motion begins to emerge.
 
-After simulating over about 10,000 increments of \\\(\gamma \\\), ~300 steps for each value of \\\(\gamma \\\) it becomes evident in its plot that the states are indeed exhibiting bifurcation and chaotic behavior.
+It typically takes some number of steps before the system begins to settle towards its attractors; and that to observe bifurcation, many more additional steps are required to observe their periodic orbits.
+According to Strogatz, a good starting value to begin observing bifurcation is on the order of a few hundred cycles (~300). In other words, producing a bifurcation diagram over some system variable (in this case, \\\(\gamma \\\)) quickly becomes a computationally heavy task, depending on the the level of granularity. 
+
+After simulating over about 10,000 increments of \\\(\gamma \\\) &#151; 600 steps for each value of \\\(\gamma \\\) &#151; it becomes evident that the states are indeed exhibiting bifurcation and chaotic behavior.
+
+<section id="gallery1">
+<div class="row 25%">
+    <article class="3u 12u$(xsmall) work-item" style="margin-bottom: 0.5em;">
+        <a href="/images/fulls/cg_walker/x1.png" class="image fit thumb" style="margin: 0.35em auto;"><img src="/images/fulls/cg_walker/x1.png" alt="" /></a>
+        <p style="text-align: center;">a) \(\phi_{st}\)</p>
+    </article>
+    <article class="3u 12u$(xsmall) work-item" style="margin-bottom: 0.5em;">
+        <a href="/images/fulls/cg_walker/x2.png" class="image fit thumb" style="margin: 0.35em auto;"><img src="/images/fulls/cg_walker/x2.png" alt="" /></a>
+        <p style="text-align: center;">b) \(\phi_{sw}\)</p>
+    </article>
+    <article class="3u 12u$(xsmall) work-item" style="margin-bottom: 0.5em;">
+        <a href="/images/fulls/cg_walker/x3.png" class="image fit thumb" style="margin: 0.35em auto;"><img src="/images/fulls/cg_walker/x3.png" alt="" /></a>
+        <p style="text-align: center;">c) \(\dot{\phi}_{st}\)</p>
+    </article>
+    <article class="3u$ 12u$(xsmall) work-item" style="margin-bottom: 0.5em;">
+        <a href="/images/fulls/cg_walker/x4.png" class="image fit thumb" style="margin: 0.35em auto;"><img src="/images/fulls/cg_walker/x4.png" alt="" /></a>
+        <p style="text-align: center;">d) \(\dot{\phi}_{sw}\) </p>
+    </article>
+    <p id="Figure 3"><b>Figure 3:</b> bifurcation diagram of system states</p>
+</div>
+
+</section>
 
 Using MATLAB's plotting functions, we can iteratively plot the points along the robot w.r.t the simulated system states. The resulting animation serves as a visual sanity check, providing confidence that the system has been modeled as intended.
 
-<a href="https://youtu.be/SqO2aBX_hxQ" data-poprox="youtube" class="fit image"><img src="/images/thumbs/CG_walk_0_7.jpg" /></a>
+<section id="gallery2">
+<div class="row">
+    <article class="6u$ 12u$(xsmall) work-item" style="margin-bottom: 0.5em;">
+        <a href="https://youtu.be/SqO2aBX_hxQ" data-poprox="youtube" class="image vid fit thumb" style="margin: 0.35em auto;"><img src="/images/thumbs/CG_walk_0_7.jpg" /></a>
+    </article>
+    <p id="Video"><b>Video:</b> animated motion using simulated states</p>
+</div>
+</section>
 
 ### References ###
 

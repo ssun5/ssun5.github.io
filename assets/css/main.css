@@ -7,6 +7,13 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+/*
+	class options are written with CSS escaped, UTF-8 encoded characters
+	Example: 
+	.row.\35 0\25 translates to "row 50%"
+	.\31 2u\24\28xsmall\29 translates to "12u$(xsmall)"
+*/
+
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -63,6 +70,12 @@
 		margin-right: auto;
 	}
 
+	/*
+	.container:hover{
+		color: #FF0000 !important;
+	}
+	*/
+	
 	.container.\31 25\25 {
 		width: 100%;
 		max-width: 1200px;
@@ -1579,7 +1592,7 @@
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #49bf9d;
+		color: #a2a2a2;
 		text-decoration: none;
 	}
 
@@ -1588,6 +1601,7 @@
 			color: #49bf9d !important;
 			text-decoration: none;
 		}
+
 
 	strong, b {
 		color: #787878;

@@ -100,7 +100,9 @@
 				$window.on('load', function() {
 
 					$('#two').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
+						//caption: function($a) { return $a.next('h3').text(); },
+						//caption: {selector: ".description"},
+						caption: function(){return document.getElementsByTagName("h3").item(0);},
 						overlayColor: '#2c2c2c',
 						overlayOpacity: 0.85,
 						popupCloserText: '',
@@ -115,6 +117,67 @@
 					});
 
 				});
+		
+		// Additional Lightbox galleries
+				// Lightbox gallery.
+				$window.on('load', function() {
+
+					$('#gallery').poptrox({
+						caption: function($a) { return $a.next('h4').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: '.work-item a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupForceClose: true,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+
+				});		
+				// Lightbox gallery.
+				$window.on('load', function() {
+
+					$('#gallery1').poptrox({
+						popupBlankCaptionText: '',
+						caption: function($a) { return $a.next('h5').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: '.work-item a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupForceClose: true,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+
+				});	
+				// Lightbox gallery.
+				$window.on('load', function() {
+
+					$('#gallery2').poptrox({
+						popupBlankCaptionText: '',
+						caption: function($a) { return $a.next('h5').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: '.work-item a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupForceClose: true,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+
+				});	
 
 	});
 
