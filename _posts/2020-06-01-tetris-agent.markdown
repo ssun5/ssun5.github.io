@@ -24,13 +24,13 @@ date: '2020-06-01'
 
 ### Intro ###
 
-In this project, I use reinforcement learning to train an AI agent to play the game of Tetris. The agent is defined and trained with a custom set of cost functions in conjunction with vanilla policy gradient (VPG) training techniques. The resulting agent demonstrates excellent performance, frequently clearing the game board completely on a full-sized (20 x 10) game. As such, for demonstration purposes, the game board is reduced so that we can observe game terminating in a timely manner. 
+In this project, I use reinforcement learning to train an AI agent to play the game of Tetris. The agent is defined and trained with a custom set of cost functions in conjunction with vanilla policy gradient (VPG) training techniques.
 
-The goal of an intelligent agent for Tetris is to clear as many rows as possible. For this project, the puzzle pieces are selecte at random at each stage and the agent has no knowledge of the future sequence. The game plays until the puzzle stack overflows past the height limit (horizontal red line). Under these definitions, the problem of creating an intelligent agent for the game is a NP-problem, and we can only assess the performance of the agent after it has played a game. 
+The goal of an intelligent agent for Tetris is to clear as many rows as possible. For this project, the puzzle pieces are selected at random at each stage and the agent has no knowledge of the future sequence. The game plays until the puzzle stack overflows past the height limit (horizontal red line). The agent is strictly only allowed to drop a piece directly down into position. Note that variants of the game may have slightly different game rules.
 
-At first glance, one might try to optimize the agent by maximizing the number of rows cleared at each stage. Through experiments, it becomes clear that such direct ('greedy') method does not yield very good performances. Instead, we are able to achieve signficant improvements if we approach the problem with metaheuristics. This is implemented through custom cost functions which are combined as a weighted sum to produce a decision at each stage. 
+Under the given game definitions, the problem of creating an intelligent agent is a NP-problem, meaning that we can only assess the performance of the agent after it has played a game. At first glance, one might try to optimize the agent by maximizing the number of rows cleared at each stage. However, through experiments, it quickly becomes clear that such a direct ('greedy') policy does not yield a very intelligent agent. Instead, we are able to achieve signficant improvements if we approach the problem with metaheuristics. These metrics are implemented through custom cost functions which are combined as a weighted sum to produce a policy (decision at each stage). 
 
-The primary interest in the project was to define these cost functions and to optimize their corresponding weights. The optimization strategy falls under the category of stochastic optimization, in which random perturbation is employed to adjust the weight (solution) vector. 
+My primary interest in this project was to define these cost functions and to optimize their corresponding weights. The optimization strategy falls under the category of stochastic optimization, in which random perturbation is employed to adjust the weight (solution) vector. 
 
 ### Software & Simulation Tools Used ###
 
