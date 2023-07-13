@@ -70,12 +70,6 @@
 		margin-right: auto;
 	}
 
-	/*
-	.container:hover{
-		color: #FF0000 !important;
-	}
-	*/
-	
 	.container.\31 25\25 {
 		width: 100%;
 		max-width: 1200px;
@@ -1602,6 +1596,17 @@
 			text-decoration: none;
 		}
 
+	.alink{
+		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+		border-bottom: dotted 1px;
+		text-decoration: none;
+	}
+	*.alink:hover{
+		color: #49bf9d;
+	}
 
 	strong, b {
 		color: #787878;

@@ -101,8 +101,15 @@
 
 					$('#two').poptrox({
 						//caption: function($a) { return $a.next('h3').text(); },
+						caption: null,
+						//caption: function($obj){return $obj.next(this.getElementsByClassName('description')).item(0);},
+						//caption: $(this).getElementsByClassName('description').item(0),
 						//caption: {selector: ".description"},
-						caption: function(){return document.getElementsByTagName("h3").item(0);},
+						//caption: function(){return this.getElementsByClassName("description").item(0);},
+						//caption: this.getElementByClassName("description").item(0),
+						//captionText: i.attr('title'),
+						//caption: $.parseHTML(i.attr('title')),	//parse 'title' attributes as HTML
+						
 						overlayColor: '#2c2c2c',
 						overlayOpacity: 0.85,
 						popupCloserText: '',

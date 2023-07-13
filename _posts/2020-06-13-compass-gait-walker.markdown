@@ -6,6 +6,7 @@ math: true
 date: '2020-06-13'
 ---
 <img id="Figure 1" src="/images/fulls/x1_orbit_fine_just4fun.png" class="fit image">
+
 <p><b>Figure 1</b></p>
 
 ### Intro ###
@@ -22,7 +23,7 @@ The system is modeled and simulated entirely within MATLAB computing environment
 
 Below is a sketch of the system we are interested in. The walker interacts with the environment with its two rigid, rectangular legs. It is allowed to traverse along a sloped surface, defined by road grade \\\(\gamma \\\) through passive dynamics (gravity only, no other control inputs). At any given moment, one leg is denoted as the "stance leg" and the other as the "swing leg". Corresponding states of the system are denoted by subscripts \\\(st \\\) & \\\(sw \\\), respectively.
 
-<img id="Figure 2" src="/images/fulls/cg_walker_sketch.jpeg" class="fit image">
+<img id="Figure 2" src="/images/fulls/cg_walker/cg_walker_sketch.jpeg" class="fit image">
 <p><b>Figure 2:</b> sketch of cg-walker</p>
 
 Additionally, Each leg of the robot has a center of mass (CoM) located by an offset \\\(B \\\) and \\\(C \\\), and the ends of the legs are radiused (radius: \\\(R \\\)), allowing the walker to roll its 'feet' along the ground upon impact. 
