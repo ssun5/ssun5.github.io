@@ -5,7 +5,7 @@ categories:
 math: true
 date: '2023-05-01'
 ---
-<img id="Figure 1" src="/images/fulls/cnc/cnc1.jpeg" class="fit image">
+<img id="Figure 1" src="/images/thumbs/cnc_thumb.jpeg" class="fit image">
 
 <p><b>Figure 1</b></p>
 
