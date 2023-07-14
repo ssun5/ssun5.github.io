@@ -28,12 +28,12 @@ Below is a sketch of the system we are interested in. The walker interacts with 
 
 Additionally, Each leg of the robot has a center of mass (CoM) located by an offset \\\(B \\\) and \\\(C \\\), and the ends of the legs are radiused (radius: \\\(R \\\)), allowing the walker to roll its 'feet' along the ground upon impact. 
 
-Finally, the states of the system are defined by the vector \\\([\phi_{st}, \phi_{sw}, \dot{\phi}_{st}, \dot{\phi}_{sw} ]\\\).
+Finally, the states of the system are defined by the vector $$[\phi_{st},\phi_{sw},\dot{\phi}_{st},\dot{\phi}_{sw}]$$.
 
 
 ### Impact Modeling ###
 
-Contact and collision in the system is characterized by non-slip and no-bounce contact. Under such definition, translational momentum at the point of contact is *not conserved*. This simplification is reasonable for most low road grade simulations, where impact is relatively low. In this project, the system is necessarily operated at low road grades, because beyond a certain angle \\\(\gamma \\\), it is not possible to keep the walker from falling over. Furthermore, it allows us to reduce the number of states to simulate, as the position and translational velocities of the legs become coupled with the angle and angular velocities of the legs. As such, the system is completely described by the states \\\([\phi_{st}, \phi_{sw}, \dot{\phi}_{st}, \dot{\phi}_{sw} ]\\\).
+Contact and collision in the system is characterized by non-slip and no-bounce contact. Under such definition, translational momentum at the point of contact is *not conserved*. This simplification is reasonable for most low road grade simulations, where impact is relatively low. In this project, the system is necessarily operated at low road grades, because beyond a certain angle \\\(\gamma \\\), it is not possible to keep the walker from falling over. Furthermore, it allows us to reduce the number of states to simulate, as the position and translational velocities of the legs become coupled with the angle and angular velocities of the legs. As such, the system is completely described by the states $$[\phi_{st},\phi_{sw},\dot{\phi}_{st},\dot{\phi}_{sw}]$$.
 
 ### Bifurcation ###
 
