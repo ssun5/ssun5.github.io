@@ -184,6 +184,46 @@
 						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
 					});
 
+				});
+				// Lightbox gallery.
+				$window.on('load', function() {
+
+					$('#gallery3').poptrox({
+						popupBlankCaptionText: '',
+						caption: function($a) { return $a.next('h5').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: '.work-item a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupForceClose: true,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+
+				});	
+				// Lightbox gallery.
+				$window.on('load', function() {
+
+					$('#gallery4').poptrox({
+						popupBlankCaptionText: '',
+						caption: function($a) { return $a.next('h5').text(); },
+						overlayColor: '#2c2c2c',
+						overlayOpacity: 0.85,
+						popupCloserText: '',
+						popupLoaderText: '',
+						selector: '.work-item a.image',
+						usePopupCaption: true,
+						usePopupDefaultStyling: false,
+						usePopupEasyClose: false,
+						usePopupForceClose: true,
+						usePopupNav: true,
+						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
+					});
+
 				});	
 
 	});
