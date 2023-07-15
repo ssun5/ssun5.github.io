@@ -190,7 +190,7 @@ Each H-bridge is composed of 4 high-power N-MOSFETs. The H-bridge driver (locate
 </section>
 
 
-.... more
+... more
 
 
 ### References ### 
