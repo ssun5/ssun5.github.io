@@ -27,7 +27,7 @@ date: '2023-05-01'
     </article>
 </div>
 
-### Introduction ###
+## Introduction ##
 
 When I was 15yrs old, I spent about a year developing this budget CNC machine from scratch. At the time, consumer grade CNC machines, 3D printers, and their corresponding components were not yet commonly available. This meant that to build a machine of this size with good performances, all while keeping costs low, was a major challenge. Nevertheless, I was determined...
 
@@ -37,7 +37,7 @@ For actuation of the machine, each axis is driven by a stepper motor via the &fr
 
 The resulting system is exceptionally low-cost, but achieving this required overcoming many design challenges.
 
-### Challenges ###
+## Challenges ##
 
 Almost all of the challenges arise from using less than optimal components for the drive trains. First, we have the &frac14;" - 20 threaded rods, which are really not optimal for driving linear motion. It is slow, as it requires many revolutions from the actuating motor to move a given distance (Note that the '20' denotes the number of revolutions per inch). In other words, it requires fast stepping from the stepper motors to move the machine effectively. In addition they also tend to be quite stiff to drive: to combat backlash, I used plastic nuts with very tight thread meshing along each axis, which in turn creates a lot of friction. The consequence of this is that the drive train requires moderately high driving torque (proportional to current) from the motors to avoid stalling.
 <div>
@@ -49,7 +49,7 @@ The problem is really compounded by the fact that we have these cheap stepper mo
 
 The result of all of this is that the custom driver circuits need to be high-powered and sophisticated with its timing and driving sequence to use the motors effectively. 
 
-### System Overview ###
+## System Overview ##
 
 In this section, I will be introducing an overview of the system and discuss the scope of this post.
 
@@ -62,7 +62,7 @@ First, we will not be discussing the mechanical design of the system. Instead, w
 
 Starting from the left, we have a PC, which takes 3D models/tool paths and convert the machine operations into G-Code via a G-Code sender. The G-Code sender sends the information by USB or parallel port interface to a hardware implemented G-Code translator, which is responsible for servicing user interfaces as well as distributing the drive signals to the motor controllers responsible for controlling each axis of the machine. Each axis of the machine is controlled by one MCU, two H-bridges, and a stepper motor. For this post, we will primarily be focusing on the portion of the system circled in red.
 
-### Problem ###
+## Problem ##
 
 Let's discuss our design problem.
 
@@ -101,7 +101,7 @@ With some napkin math, we figure out that &#151; without any special circuitry &
 
 This is far too slow of a milling rate. As a general discussion of milling rate: feed rates that are too low, especially in the context of spindle runout (as is very much true for a Dremel rotary tool), tend to lead to burning of softer materials; and feed rates that are too high tend to cause chatter, breaking bits, and general bad dimensions.
 
-### Solution ###
+## Solution ##
 <p>
 It turns out, the solution is principally quite simple... <br>
 
@@ -136,11 +136,11 @@ Note that in real applications, special attention is made around 'turn-off' of t
 
 These methods will be discussed more in depth in the following sections.
 
-### Implementation ###
+## Implementation ##
 
 I will first discuss the basic implementation of the motor controllers, including the current-feedback loop. Afterwards, we will take a look at improvements which substantially improve the performance of the overall system.
 
-#### The Basics ####
+### The Basics ###
 <div>
 <img style="margin-bottom: 0" id="Figure 7" src="/images/fulls/cnc/system_diagram_per_axis_16_9.jpeg" class="fit image">
 <p><b>Figure 7: </b>system diagram per axis</p>
@@ -297,17 +297,159 @@ Figure 15 shows an in-line measurement of the winding current during a wave-driv
 
 The results from the basic implementation show that the baseline performance is quite good. The waveform shown in Figure 15 exhibits good fidelity, with minimum distortion on the target sinusoidal waveform.
 
-#### Deep Dive: Current Sensing ####
+### Deep Dive: Current Sensing ###
 
 In the following sections, I will do a deep dive on the subject of current sensing, as this is a critical part of the working circuit. I will be analyzing the basic implementation and how it can be improved to yield an improved system.
 
+#### Low-side Current Sensing ####
+
+<p> 
+ So far the discussion has been focused around low-side current sensing. There are several benefits to using this method of measuring current through the circuit, and the keypoints are summarized below.<br>
+
+<ul>
+<b>Pros:</b>
+<li>Good bandwidth & accuracy</li>
+<li>Simple implementation:</li>
+<ul>
+<li class="alt">does not require special op-amp (at most: rail-to-rail)</li>
+<li class="alt">measurement is GND referenced</li>
+<li class="alt">unidirectional mapping of current</li>
+</ul>
+<li>Generally good regulation of \(I_{motor} \) for:</li>
+$$
+\begin{align}
+ T_{sys} \; &<< \; \tau_{motor} \; << \; T_{tmr} \\
+&\small{T_{sys}\text{: instruction cycle of MCU}} \\
+&\small{T_{tmr}\text{: PWM period}}
+\end{align}
+$$
+<li>Limits maximum current, \(I_{motor,max}\)</li>
+</ul>
+</p>
+
+In general, low-side current sensing is one of the simplest and most robust methods for measuring current through a system. With the shunt resistor as close to GND as possible, the common-mode voltage on the op-amp inputs are reduced to a minimum (assuming the op-amp is also GND-referenced); the design eliminates the need for specialty op-amps. (Refer to Figure 16 for a detailed view):
+
+<div>
+<img style="margin-bottom: 0" id="Figure 16" src="/images/fulls/cnc/lowside_rsense.png" class="fit image">
+<p><b>Figure 16: </b>low-side current sensing with TLE7182EM </p>
+</div>
+
+ In addition, since the shunt resistor is placed outside of the H-bridge, current flowing through the system is mapped unidirectionally &#151; regardless of whether the H-bridge is driven in "forward" or "reverse" mode. This simplifies how the analog measurement is handled because 1) unidirectional mapping effectively doubles the resolution of readings when compared with bidirectional readings, and 2) it becomes easy to substitute a comparator circuit in place of an ADC when processing this signal on the MCU side.     
+
+Furthermore, the system directly limits the maximum current flowing through the system. This is a valuable feature as the system is capable of drawing very high currents:
+
+$$
+\frac{V_{s}}{R_{motor}} = I, \; \frac{24V}{0.387\Omega} = 62A
+$$
+
+By design, the components are chosen to handle up to 110A, however, the intention is not necessarily for the current draw to reach this level. The system can achieve good regulation of this current given that \\\(T_{sys} \\\) is much faster than the time constant of the load (\\\(\tau_{motor}\\\)), and that \\\(\tau_{motor}\\\) is much smaller than \\\(T_{tmr}\\\) such that current through the load has enough time to decay during its "off" phase. 
+
+These aspects of low-side sensing come paired with their drawbacks as well. In particular, since current sensing resides outside of the H-bridge, the system is effectively 'blind' during the "off" phase:
+
+<div>
+<img style="margin-bottom: 0" id="Figure 17" src="/images/fulls/cnc/lowside_issue.jpeg" class="fit image">
+<p><b>Figure 17: </b>"off" phase</p>
+</div>
+
+This means that the system does not directly regulate \\\(I_{motor,avg}\\\), and that the bridge must be switched into an "on" configuration in order to take measurement of the current through the load. This imposes aggressive timing requirements on the controlling MCU, specifically how quickly it can handle the analog signal and execute its Interrupt Service Routine (ISR), which is directly related to \\\(T_{sys}\\\), the instruction cycle of the MCU. The keypoints for the pros and cons of low-side sensing are highlighted below:
+
+<div class="row">
+
+<article class="6u 12u$(xsmall)">
+<h4>Pros: </h4>
+<ul>
+<li>Good bandwidth & accuracy</li>
+<li>Simple implementation:</li>
+<ul style="margin-bottom:0">
+<li>does not require special op-amp (at most: rail-to-rail)</li>
+<li>measurement is GND referenced</li>
+<li>unidirectional mapping of current</li>
+</ul>
+<li>Generally good regulation of \(I_{motor} \) for:</li>
+$$
+\begin{align}
+ T_{sys} \; &<< \; \tau_{motor} \; << \; T_{tmr} \\
+&\small{T_{sys}\text{: instruction cycle of MCU}} \\
+&\small{T_{tmr}\text{: PWM period}}
+\end{align}
+$$
+<li>Limits maximum current, \(I_{motor,max}\)</li>
+</ul>
+</article>
+
+<article class="6u$ 12u$(xsmall)">
+<h4>Cons: </h4>
+<ul>
+<li>Does not directly regulate \(I_{motor,avg}\)</li>
+<li>System is 'blind' during OFF cycle</li>
+<li>Limiting \(I_{motor,max}\) results in aggressive timing requirements on MCU:</li>
+<ul>
+<li >ISR</li>
+<li >Analog signal measurement</li>
+<li >\(T_{sys}\)</li>
+</ul>
+</ul>
+</article>
+
+</div>
+
+Fortunately, there are some techniques we can employ to substantially improve the timing of the MCU and total feedback loop. In terms of the ISR, each ISR should be written as concisely as possible. Depending on the platform for the MCU, it may also be necessary to write the ISR with ASM, as C-language abstraction often causes significant delays in servicing the ISR. To further reduce this delay, \\\(T_{sys}\\\) may be boosted via PLL, which is commonly available on PIC microcontrollers.
+
+In terms of timing of the analog signal measurement, I would recommend avoiding ADC's all together. Typical ADC units on-board of MCUs rely on a switched-capacitor circuit, which tends to be noisy and slow. Instead, similar functionality can be achieved through a comparator with a set-point defined by an DAC. The combination of a comparator + DAC relies on a resistor ladder & op-amp, and is significantly faster than an ADC. It also does not introduce noise on the measurement! Keypoints listed below:   
+
+<article class="6u$ 12u$(xsmall)">
+<h4>Improving timing:</h4>
+<li>ISR:</li>
+    <ul>
+        <li>Write short, concise ISR</li>
+        <li>Write ASM &#151; C Language abstraction causes <em>large delays</em></li>
+        <li>Increase \(T_{sys}\) &#8594; PLL</li>
+            <ul><li>reduces delay between interrupt occurence and ISR execution</li></ul>
+    </ul>
+<li>Analog signal measurement: <span style="background-color: #e06666; color: #ffffff; ">Avoid using ADC!</span></li>
+    <ul>
+        <li><span style="background-color: #e06666; color: #ffffff; ">Choose {DAC + comparator}</span> vs. ADC</li>
+        <ul>
+            <li>Switched cap. ADC: slow, noisy</li>
+            <li>{DAC + comparator}: resistor ladder + OpAmp &#151; <span style="background-color: #e06666; color: #ffffff; ">fast, does not introduce noise on measurement</span></li>
+        </ul>
+    </ul>
+</article>
+
+The last point regarding low-side sensing is the topic of current distortion when driving an inductive load under a wave-drive scheme:
+
+<div>
+<img style="margin-bottom: 0" id="Figure 18" src="/images/fulls/cnc/current_distortion.jpeg" class="fit image">
+<p><b>Figure 18: </b>current distortion (slow decay)<a href="#references"><sup>[5]</sup></a></p>
+</div>
+
+Notice that distortion occurs when the current is expected to move towards 0. A combination of factors contribute to this distortion, with the primary reason being that the H-bridge must be turned ON to measure the state of \\\(I_{motor}\\\). During this brief "on" period, the current through the system is rising even though the overall control may be attempting to control it towards zero. Other key factors are summarized below:
+
+<article class="6u$ 12u$(xsmall)">
+<h4>Current Distortion (slow decay)</h4>
+<ul>
+<li>System being 'blind' during OFF cycle</li>
+    <ul style="margin-bottom: 0">
+        <li>Must turn ON H-bridge to measure state of \(I_{motor}\)</li>
+    </ul>
+<li>Inadequate timing</li>
+<li>Only using Slow Decay</li>
+    <ul>
+        <li>Other modes may be unsafe without full visibility of \(I_{motor}\)</li>
+    </ul>
+</ul>
+</article>
+
+Distortion may be improved with faster timing, however, it is almost unavoidable when running only the basic implementation discussed so far...
+
+### Improvement: In-line current sensing! ###
 
 
 
 ... more
 
 
-### References ### 
+## References ## 
 
 <ol style="font-size:0.75em; ">
     <li>STMicroelectronics, “Stepper-Motor Performance Constant-Current Chopper Driver UPS”, AN468 Application Note, December 2003.</li>
