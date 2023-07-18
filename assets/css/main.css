@@ -2567,8 +2567,8 @@
 
 	#header {
 		background-color: #1f1815;
-		background-attachment: scroll,								fixed;
-		background-image: url("images/overlay.png"), url("../../images/fulls/IMG_4911.jpeg");
+		background-attachment: scroll, 								fixed;
+		background-image: url("images/overlay.png"), url("/images/fulls/IMG_4911.jpeg");
 		background-position: top left,							top left;
 		background-repeat: repeat,								no-repeat;
 		background-size: auto,								50% auto;
