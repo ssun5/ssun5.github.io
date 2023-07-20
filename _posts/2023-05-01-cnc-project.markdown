@@ -56,7 +56,7 @@ In this section, I will be introducing an overview of the system and discuss the
 First, we will not be discussing the mechanical design of the system. Instead, we will only be examining the electrical portion of the system. Here is an overview diagram of the electrical system: 
 
 <div>
-<img style="margin-bottom: 0" id="Figure 3" src="/images/fulls/cnc/system_overview.jpg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 3" src="/images/fulls/cnc/system_overview.jpg" class="fit image">
 <p><b>Figure 3: </b> electrical system overview</p>
 </div>
 
@@ -122,7 +122,7 @@ By using a feedback loop and switching the applied voltage ON & OFF appropriatel
 A simplified illustration of such a feedback loop is illustrated in Figure 6. At \\\(V_{S}\\\), the load is supplied a voltage much higher than what it permissible at steady state (e.g. 24V). A sense resistor on the "low-side" is used to measure the current flow through the load and a comparator detects when this current rises past a pre-set level. When triggered, the comparator cuts off the rising flow of current, thereby regulating the load and forming a current feedback loop.
 
 <div>
-<img style="margin-bottom: 0" id="Figure 6" src="/images/fulls/cnc/simplified_FB.jpg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 6" src="/images/fulls/cnc/simplified_FB.jpg" class="fit image">
 <p><b>Figure 6: </b> simplified current-feedback loop <a href="#references"><sup>[1]</sup></a></p>
 </div>
 
@@ -142,7 +142,7 @@ I will first discuss the basic implementation of the motor controllers, includin
 
 ### The Basics ###
 <div>
-<img style="margin-bottom: 0" id="Figure 7" src="/images/fulls/cnc/system_diagram_per_axis_16_9.jpeg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 7" src="/images/fulls/cnc/system_diagram_per_axis_16_9.jpeg" class="fit image">
 <p><b>Figure 7: </b>system diagram per axis</p>
 </div>
 Above is a subsystem diagram for each axis. Recall that each motor or axis requires:
@@ -155,7 +155,7 @@ Above is a subsystem diagram for each axis. Recall that each motor or axis requi
 , and Figure 8 shows the bench testing setup for a prototype of this subsystem:
 
 <div>
-<img style="margin-bottom: 0" id="Figure 8" src="/images/fulls/cnc/overview_per_axis_4_3.jpeg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 8" src="/images/fulls/cnc/overview_per_axis_4_3.jpeg" class="fit image">
 <p><b>Figure 8: </b>overview per axis</p>
 </div>
 
@@ -241,6 +241,7 @@ The overall circuit is based on TLE7182EM datasheet recommendation (Figure 10). 
 </section>
 
 <p>
+Break-down of driver circuit:<br>
 <b>Figure 10b: </b>4 \(\times \) external MOSFETs per H-bridge with RC turn-off snubber. (Refer to appendix for discussion on MOSFET selection). <br>
 <b>Figure 10c: </b>1 \(\times \) external MOSFET for reverse battery-polarity protection. This is a necessary feature to protect a MOSFET based H-bridge against critical operator error: reverse battery polarity. The controlling element here is an NMOS, which is significantly more power efficient than an in-line diode and more cost effective than a PMOS implementation. The main tradeoff is the complexity of implementation, particularly, an NMOS in this placement requires a charge pump to deliver driving voltages above the rail voltage. TLE7182EM has an integrated charge pump specifically for this. A minor note on the BJT and its accompanying diode: the diode is necessary here to prevent an unplanned avalanche breakdown across the Emitter-Base junction.<br>
 <b>Figure 10d: </b>charge pumps reference source voltage of high-side MOSFETs such that the gates of the high-side MOSFETs can be switched robustly. <br>
@@ -250,7 +251,7 @@ The overall circuit is based on TLE7182EM datasheet recommendation (Figure 10). 
 Using the design recommendation, I designed the following circuit (Figure 11). The physical prototype can be seen in Figure 9b. 
 
 <div>
-<img style="margin-bottom: 0" id="Figure 11" src="/images/fulls/cnc/starting_schematic.png" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 11" src="/images/fulls/cnc/starting_schematic.png" class="fit image">
 <p><b>Figure 11: </b>actual schematic</p>
 </div>
 
@@ -264,16 +265,16 @@ There are a few keypoints to take note of regarding the above circuit:
 At this point, we should also briefly discuss the drive sequence for the external H-bridges. For this initial discussion, we refer to Figure 12.
 
 <div>
-<img style="margin-bottom: 0" id="Figure 12" src="/images/fulls/cnc/initial_drive_sequence.jpg" class="fit image">
-<p><b>Figure 12: </b>drive sequence overview <a href="#references"><sup>[3]</sup></a></p>
+<img style="margin-bottom: 0.5em;" id="Figure 12" src="/images/fulls/cnc/initial_drive_sequence.jpg" class="fit image">
+<p><b>Figure 12: </b>"slow-decay" drive sequence<a href="#references"><sup>[3]</sup></a></p>
 </div>
 
 Figure 12 illustrates a single winding of a stepper motor being switched ON & OFF. During the "on" phase, the motor winding is first activated by turning on Q1 and Q4. During the "off" phase, the current flowing through the winding is diverted through Q2 and Q4, such that it circulates in the low-side of the H-bridge. This type of drive sequence is called "slow-decay" or "free-wheeling", as the circulating current in the "off" phase takes on a slow exponential decay, dissipating through the resistances within the winding and low-side switches. The resulting waveforms can be seen on the right side of the image, where the current is shown rising and falling during the "on" and "off" phases. The goal of this switching scheme is to maintain the average current around some target current. In addition, by turning on the two low-side switches during the "off" phase, back EMF from the motor is managed and ripple voltages on the rails are minimized. Using the low-side switches is slightly preferred over the high-side switches for the "off" phase, as the low-side switches do not require charge pumps to operate.
 
-A bipolar stepper motor has a minimum of two sets of windings to achieve sequential steps. In order to actuate the stepper motors used in this project, each motor is controlled by two H-bridges and the order of actuation is 'staggered' to achieve sequential steps. In the simplest mode, the motors are activated at "full step", which is the coarsest but most robust method of driving a stepper motor. Further fractional steps may be achieved by moving the rotor partial way between full steps. In essence, the two windings are actuated at 90&#176; out-of-phase from each other. With further discretization of the drive sequence, the sequence is effectively two sine waves, 90&#176;out-of-phase from each other &#151; hence, the name "wave drive". Figure 13 shows the target currents w.r.t time for the two windings inside the stepper motor.   
+A bipolar stepper motor has a minimum of two sets of windings to achieve sequential steps. In order to actuate the stepper motors used in this project, each motor is controlled by two H-bridges and the order of actuation is 'staggered' to achieve sequential steps. In the simplest mode, the motors are activated at "full step", which is the coarsest but most robust method of driving a stepper motor. Further fractional steps may be achieved by driving the rotor partial way between full steps. In essence, the two windings are actuated at 90&#176; out-of-phase from each other. With further discretization, the drive sequences begin resembling two sine waves, 90&#176;out-of-phase from each other &#151; hence, the name "wave drive". Figure 13 shows the target currents w.r.t time for the two windings inside the stepper motor.   
 
 <div>
-<img style="margin-bottom: 0" id="Figure 13" src="/images/fulls/cnc/MP6500_microstepping1.jpeg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 13" src="/images/fulls/cnc/MP6500_microstepping1.jpeg" class="fit image">
 <p><b>Figure 13: </b>target winding currents <a href="#references"><sup>[4]</sup></a></p>
 </div>
 
@@ -282,7 +283,7 @@ A bipolar stepper motor has a minimum of two sets of windings to achieve sequent
 Using the described methods and low-side current sensing, the results of the implemented circuit can be seen below (Figure 14).
 
 <div>
-<img style="margin-bottom: 0" id="Figure 14" src="/images/fulls/cnc/chopper_waveform.jpg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 14" src="/images/fulls/cnc/chopper_waveform.jpg" class="fit image">
 <p><b>Figure 14: </b>{ Ch1: Q1 \(\overline{V}_{G}\) &#8197; Ch2: Low-side \(i_{sense}\) }</p>
 </div>
 
@@ -291,7 +292,7 @@ Here, channel 1 shows the (inverted) gate signal \\\(\overline{V}_{G}\\\) on hig
 Figure 15 shows an in-line measurement of the winding current during a wave-drive sequence. 
 
 <div>
-<img style="margin-bottom: 0" id="Figure 15" src="/images/fulls/cnc/wave_drive0.jpeg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 15" src="/images/fulls/cnc/wave_drive0.jpeg" class="fit image">
 <p><b>Figure 15: </b>{ Ch1: \(I_{motor}\) }</p>
 </div>
 
@@ -299,38 +300,16 @@ The results from the basic implementation show that the baseline performance is 
 
 ### Deep Dive: Current Sensing ###
 
-In the following sections, I will do a deep dive on the subject of current sensing, as this is a critical part of the working circuit. I will be analyzing the basic implementation and how it can be improved to yield an improved system.
+In the following sections, I will do a deep dive on the subject of current sensing, as this is a critical part of the working circuit. I will be analyzing the basic implementation and how it can be augmented to yield an improved system.
 
 #### Low-side Current Sensing ####
 
-<p> 
- So far the discussion has been focused around low-side current sensing. There are several benefits to using this method of measuring current through the circuit, and the keypoints are summarized below.<br>
-
-<ul>
-<b>Pros:</b>
-<li>Good bandwidth & accuracy</li>
-<li>Simple implementation:</li>
-<ul>
-<li class="alt">does not require special op-amp (at most: rail-to-rail)</li>
-<li class="alt">measurement is GND referenced</li>
-<li class="alt">unidirectional mapping of current</li>
-</ul>
-<li>Generally good regulation of \(I_{motor} \) for:</li>
-$$
-\begin{align}
- T_{sys} \; &<< \; \tau_{motor} \; << \; T_{tmr} \\
-&\small{T_{sys}\text{: instruction cycle of MCU}} \\
-&\small{T_{tmr}\text{: PWM period}}
-\end{align}
-$$
-<li>Limits maximum current, \(I_{motor,max}\)</li>
-</ul>
-</p>
+ So far the discussion has been focused around low-side current sensing. There are several benefits to using this method of measuring current through the circuit.
 
 In general, low-side current sensing is one of the simplest and most robust methods for measuring current through a system. With the shunt resistor as close to GND as possible, the common-mode voltage on the op-amp inputs are reduced to a minimum (assuming the op-amp is also GND-referenced); the design eliminates the need for specialty op-amps. (Refer to Figure 16 for a detailed view):
 
 <div>
-<img style="margin-bottom: 0" id="Figure 16" src="/images/fulls/cnc/lowside_rsense.png" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 16" src="/images/fulls/cnc/lowside_rsense.png" class="fit image">
 <p><b>Figure 16: </b>low-side current sensing with TLE7182EM </p>
 </div>
 
@@ -344,14 +323,22 @@ $$
 
 By design, the components are chosen to handle up to 110A, however, the intention is not necessarily for the current draw to reach this level. The system can achieve good regulation of this current given that \\\(T_{sys} \\\) is much faster than the time constant of the load (\\\(\tau_{motor}\\\)), and that \\\(\tau_{motor}\\\) is much smaller than \\\(T_{tmr}\\\) such that current through the load has enough time to decay during its "off" phase. 
 
+$$
+\begin{align}
+ T_{sys} \; &<< \; \tau_{motor} \; << \; T_{tmr} \\
+&\small{T_{sys}\text{: instruction cycle of MCU}} \\
+&\small{T_{tmr}\text{: PWM period}}
+\end{align}
+$$
+
 These aspects of low-side sensing come paired with their drawbacks as well. In particular, since current sensing resides outside of the H-bridge, the system is effectively 'blind' during the "off" phase:
 
 <div>
-<img style="margin-bottom: 0" id="Figure 17" src="/images/fulls/cnc/lowside_issue.jpeg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 17" src="/images/fulls/cnc/lowside_issue.jpeg" class="fit image">
 <p><b>Figure 17: </b>"off" phase</p>
 </div>
 
-This means that the system does not directly regulate \\\(I_{motor,avg}\\\), and that the bridge must be switched into an "on" configuration in order to take measurement of the current through the load. This imposes aggressive timing requirements on the controlling MCU, specifically how quickly it can handle the analog signal and execute its Interrupt Service Routine (ISR), which is directly related to \\\(T_{sys}\\\), the instruction cycle of the MCU. The keypoints for the pros and cons of low-side sensing are highlighted below:
+This means that the system does not directly regulate \\\(I_{motor,avg}\\\), and that the bridge must be switched into an "on" configuration in order to take measurement of the current through the load. This may lead to distortions on the current waveform; furthermore, it imposes aggressive timing requirements on the switching components and the controlling MCU, specifically how quickly it can handle the analog signal and execute its Interrupt Service Routine (ISR), which is directly related to \\\(T_{sys}\\\), the instruction cycle of the MCU. The keypoints for the pros and cons of low-side sensing are highlighted below:
 
 <div class="row">
 
@@ -393,9 +380,9 @@ $$
 
 </div>
 
-Fortunately, there are some techniques we can employ to substantially improve the timing of the MCU and total feedback loop. In terms of the ISR, each ISR should be written as concisely as possible. Depending on the platform for the MCU, it may also be necessary to write the ISR with ASM, as C-language abstraction often causes significant delays in servicing the ISR. To further reduce this delay, \\\(T_{sys}\\\) may be boosted via PLL, which is commonly available on PIC microcontrollers.
+Fortunately, there are some techniques we can employ to substantially improve the timing of the MCU and the overall feedback loop. In terms of the ISR, each ISR should be written as concisely as possible. Depending on the platform for the MCU, it may also be necessary to write the ISR with ASM, as C-language abstraction often causes significant delays in servicing the ISR. To further reduce this delay, \\\(T_{sys}\\\) may be boosted via PLL, which is commonly available on PIC microcontrollers.
 
-In terms of timing of the analog signal measurement, I would recommend avoiding ADC's all together. Typical ADC units on-board of MCUs rely on a switched-capacitor circuit, which tends to be noisy and slow. Instead, similar functionality can be achieved through a comparator with a set-point defined by an DAC. The combination of a comparator + DAC relies on a resistor ladder & op-amp, and is significantly faster than an ADC. It also does not introduce noise on the measurement! Keypoints listed below:   
+In terms of timing of the analog signal measurement, I would recommend avoiding ADC's all together. Typical ADC units on-board of MCUs rely on switched-capacitor circuits, which tend to be noisy and slow. Instead, similar functionality can be achieved through a comparator with a set-point defined by a DAC. The combination of a comparator + DAC relies on a resistor ladder & op-amp &#151; making it significantly faster than an ADC; it also does not impose noise on the measurement! Keypoints listed below:   
 
 <article class="6u$ 12u$(xsmall)">
 <h4>Improving timing:</h4>
@@ -416,10 +403,10 @@ In terms of timing of the analog signal measurement, I would recommend avoiding 
     </ul>
 </article>
 
-The last point regarding low-side sensing is the topic of current distortion when driving an inductive load under a wave-drive scheme:
+The final drawback in low-side sensing is the topic of <em>current distortion</em> when driving an inductive load under a wave-drive scheme:
 
 <div>
-<img style="margin-bottom: 0" id="Figure 18" src="/images/fulls/cnc/current_distortion.jpeg" class="fit image">
+<img style="margin-bottom: 0.5em;" id="Figure 18" src="/images/fulls/cnc/current_distortion.jpeg" class="fit image">
 <p><b>Figure 18: </b>current distortion (slow decay)<a href="#references"><sup>[5]</sup></a></p>
 </div>
 
@@ -429,7 +416,7 @@ Notice that distortion occurs when the current is expected to move towards 0. A 
 <h4>Current Distortion (slow decay)</h4>
 <ul>
 <li>System being 'blind' during OFF cycle</li>
-    <ul style="margin-bottom: 0">
+    <ul style="margin-bottom: 0.5em;">
         <li>Must turn ON H-bridge to measure state of \(I_{motor}\)</li>
     </ul>
 <li>Inadequate timing</li>
@@ -443,6 +430,91 @@ Notice that distortion occurs when the current is expected to move towards 0. A 
 Distortion may be improved with faster timing, however, it is almost unavoidable when running only the basic implementation discussed so far...
 
 ### Improvement: In-line current sensing! ###
+
+We can improve upon the basic implementation by using "in-line" current sensing. Figure 19 illustrates this concept.
+
+<div>
+<img style="margin-bottom: 0.5em;" id="Figure 19" src="/images/fulls/cnc/in_line_Isense.jpg" class="fit image">
+<p><b>Figure 19: </b>shunt resistor placement in "in-line" current sensing<a href="#references"><sup>[3]</sup></a></p>
+</div>
+
+The first benefit of having a sense resistor in this placement is pretty obvious: the system has visibility of the magnitude and direction of \\\(I_{motor}\\\) at all times. This information is crucial in effectively driving the load towards 0 in the wave-drive scheme. In the the previous approach (i.e. low-side sensing), the system is limited to the natural decay of current "free-wheeling" through the motor &#151; a relatively slow process &#151; hence the name "slow-decay". The method of "slow-decay" produces distorted sine waves when the natural decay rate of the load is slower than the decay rate of the target trajectory (sine wave).
+
+The problem is further exacerbated when the H-bridge is briefly turned ON to measure to current flow at each start of cycle &#151; effectively increasing the current through the load before allowing it to decay.
+
+By having an in-line shunt resistor to the load, it is no longer required for the H-bridge to switch ON for the system to measure current flowing through the load. In addition, with information on the direction flow of current, the system is now allowed to utilize "fast-decay" to drive current flow in the reverse direction during the "off" phase (see Figure 20). This significantly improves the response time of the system when driving the load towards 0, minimizing distortion to the target trajectory. Figure 21 shows how "fast-decay" is used to quickly decrease the motor current to match the (decreasing) target current. 
+
+<div>
+<img style="margin-bottom: 0.5em;" id="Figure 20" src="/images/fulls/cnc/fast_decay_diagram.jpg" class="fit image">
+<p><b>Figure 20: </b>"fast-decay" control scheme<a href="#references"><sup>[3]</sup></a></p>
+</div>
+
+Using in-line sensing, the system now also has the option to directly regulate the average current through the motor winding \\\(I_{motor,avg}\\\) as opposed to <em>only</em> limiting the peak current \\\(I_{motor,max}\\\) (as in the case of low-side sensing). This reduces dependency on aggressive timing of the switching components. Having a robust H-bridge that can handle large currents also helps us further capitalize on this. Depending on the application, if a load is not sensitive to larger ripple currents and instead prioritizes average current, in-line current sensing enables looser timing while still maintaining a controlled \\\(I_{avg} \\\).
+
+<div>
+<img style="margin-bottom: 0.5em;" id="Figure 21" src="/images/fulls/cnc/fast_decay_Oscope_zoom.jpeg" class="fit image">
+<p><b>Figure 21: </b>fast-decay utilization when decreasing target current (<span style="color: red;"> &#8722; &#8722; </span>red dotted line)<a href="#references"><sup>[5]</sup></a></p>
+</div>
+
+<div>
+<img style="margin-bottom: 0.5em;" id="Figure 22" src="/images/fulls/cnc/fast_decay_Oscope.jpeg" class="fit image">
+<p><b>Figure 22: </b>fast-decay effects on overall wave-drive accuracy<a href="#references"><sup>[5]</sup></a></p>
+</div>
+
+I designed a basic implementation of an in-line sensing circuit; the schematic is shown in Figure 23. This implementation relies on the specialty op-amp LMP8601MA from Texas Instruments, which features a precision-trimmed resistor network, high CMRR, and high tolerance to common mode voltages (CMVR).
+
+<div>
+<img style="margin-bottom: 0.5em;" id="Figure 23" src="/images/fulls/cnc/LMP8601MA_in_line_sensing.jpg" class="fit image">
+<p><b>Figure 23: </b>LMP8601MA in-line current sensing circuit</p>
+</div>
+
+Circuits measuring voltage across an in-line shunt resistor are generally more complex than their low-side counterpart. Because voltages on either ends of the shunt resistor are now floating at some voltage high above common GND, circuits that are GND-referenced need to filter out the common mode voltage, demanding high CMRR, CMVR, and a well balanced resistor network to reduce errors in measurement. Furthermore, as the expected output is now bi-directional, the analog-to-digital conversion range needs to be allocated for both positive and negative swings &#151; effectively halving the resolution w.r.t. the unidirectional version. To center the zero voltage in a full ADC range further requires a well tuned virtual-GND. Luckily, specialty op-amps like LMP8601MA and similar op-amps labeled as "current-sensing op-amps" with rail-to-rail capabilities can take on most of these design challenges. 
+
+Figure 24 shows the placement of this auxiliary circuit on the bench testing platform.
+
+<div>
+<img style="margin-bottom: 0.5em;" id="Figure 24" src="/images/fulls/cnc/aux_circuit_location.jpeg" class="fit image">
+<p><b>Figure 24: </b>location of auxiliary circuit</p>
+</div>
+
+A summary of the benefits and drawbacks of the in-line current sensing method:
+
+<div class="row">
+
+<article class="6u 12u$(xsmall)">
+<h4>Pros: </h4>
+<ul>
+<li>Bi-directional current sensing</li>
+<li>Direct measurement of \(I_{motor}\) at all times</li>
+<ul style="margin-bottom:0">
+<li>not reliant on state of H-bridge</li>
+<li>less noisy</li>
+<li>enables other driving modes (e.g. "fast-decay")</li>
+<li>less current distortion</li>
+</ul>
+<li>System may prioritize regulating \(I_{motor,avg}\)</li>
+<ul style="margin-bottom:0">
+<li>reduces dependency on aggressive timing of switching components</li>
+</ul>
+</ul>
+</article>
+
+<article class="6u$ 12u$(xsmall)">
+<h4>Cons: </h4>
+<ul>
+<li>More complex design</li>
+<li>'Requires' specialty OpAmp:</li>
+<ul style="margin-bottom:0">
+<li>high CMRR/CMVR: inputs are floating at voltages above GND</li>
+<li>precision-trimmed feedback network</li>
+<li>rail-to-rail capability</li>
+<li>precision virtual GND</li>
+</ul>
+<li>Bi-directional output leads to reduced resolution on ADC range</li>
+</ul>
+</article>
+
+</div>
 
 
 
