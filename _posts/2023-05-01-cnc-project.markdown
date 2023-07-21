@@ -33,7 +33,7 @@ When I was 15yrs old, I spent about a year developing this budget CNC machine fr
 
 I designed this machine to be built from commonly available hardware store items. The overall structure of the machine is made of MDF &#151; a dimensionally stable, vibration damping, and low-cost material &#151; as well as standard &frac14;" - 20 threaded rods, and a Dremel rotary tool for the spindle.
 
-For actuation of the machine, each axis is driven by a stepper motor via the &frac14;" - 20 threaded rods. And each motor is driven by some high power, custom motor controllers. The stepper motors were found through a liquidation sale, which meant that they came with minimal information on their specification. These cheap motors later posed many challenges to the design of the motor controller and the motion control algorithm, which will be the primary scope of this post.
+For actuation of the machine, each axis is driven by a stepper motor via the &frac14;" - 20 threaded rods. And each motor is driven by custom-designed high power motor controllers. The stepper motors were found through a liquidation sale, which meant that they came with minimal information on their specification. These cheap motors later posed many challenges to the design of the motor controller and the motion control algorithm, which will be discussed in detail in this post.
 
 The resulting system is exceptionally low-cost, but achieving this required overcoming many design challenges.
 
