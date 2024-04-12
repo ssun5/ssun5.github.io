@@ -9,260 +9,231 @@ title: "ssun"
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
+
+<head>
 	{% include head.html %}
-	</head>
-	<body id="top">
+</head>
 
-		<!-- Header -->
-			<header id="header">
-				<a href="#" class="image avatar"><img src="images/head_shot.jpg" alt="" /></a>
-				<h1><strong>Beep boop</strong>. My name is Shan-Wei Sun<br />
-				and this is my website. Please enjoy.</h1>
+<body id="top">
+	<!-- Header -->
+	<header id="header">
+		<a href="#" class="image avatar"><img src="images/head_shot.jpg" alt="" /></a>
+		<h1><strong>Beep boop</strong>. My name is Shan-Wei Sun<br />
+			and this is my website. Please enjoy.</h1>
+	</header>
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- One -->
+		<section id="one">
+			<header class="major">
+				<h2>Here's a collection of my projects and hobbies.</h2>
 			</header>
+			<p>I like studying robotic systems, working on things with my hands, and spending time in nature.
+				I believe in synergy between human and machine.
+				And by taking inspiration from nature, I hope to translate my passion for sciences and arts into more
+				human-centric technology.
+			</p>
+			<!--
+			<ul class="actions">
+				<li><a href="" class="button">Learn More</a></li>
+			</ul>
+			-->
+		</section>
 
-		<!-- Main -->
-			<div id="main">
+		<!-- Two -->
+		<section id="two">
+			<h2>Recent Work</h2>
 
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h2>Here's a collection of my projects and hobbies.</h2>
-						</header>
-						<p>I like studying robotic systems, working on things with my hands, and spending time in nature.
-							I believe in synergy between human and machine. 
-							And by taking inspiration from nature, I hope to translate my passion for sciences and arts into more human-centric technology.  
-						</p>
-						<ul class="actions">
-							<li><a href="" class="button">Learn More</a></li>
-						</ul>
-					</section>
+			<div class="row">
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/x1_orbit_fine_just4fun.png" class="image fit thumb">
+						<img src="images/thumbs/orbit_thumb.jpg" alt="orbit diagram"
+							title="Bifurcation and Chaos" />
+					</a>
+					<h3 class="description">Bifurcation and Chaos</h3>
+					<p>
+						In this project, I model the mechanics of a passively driven <em>Compass-Gait Walker</em> and its impact dynamics as it traverses down an inclined slope. Above is a plot of its inner-leg angle as the road grade (gamma) is varied. As the road grade increases, the robot walker begins to exihibit bifurcated periodic motion, and eventually &mdash; <em>chaos!</em>   
+					</p>
+					<a href="2020/06/13/compass-gait-walker.html" class="button small">Read More</a>
+				</article>
+				<article class="6u$ 12u$(xsmall) work-item">
+					<a href="https://youtu.be/SqO2aBX_hxQ" data-poprox="youtube" class="image vid fit thumb">
+						<img src="images/thumbs/CG_walk_0_7.jpg"
+							title="Compass-Gait Walker: Demo Video" />
+					</a>
+					<h3 class="description">Compass-Gait Walker: Demo Video</h3>
+					<p>Here is a video of the compass-gait walker, showing its simulated dynamics in action.</p>
+				</article>
 
-				<!-- Two -->
-					<section id="two">
-						<h2>Recent Work</h2>
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="https://youtu.be/eBs_t3VEXBo" data-poprox="youtube" class="image vid fit thumb">
+						<img src="images/thumbs/100.jpg" alt="tetris agent video"
+							title="Autonomous Tetris Agent" />
+					</a>
+					<h3>Autonomous Tetris Agent</h3>
+					<p>In this project, I use reinforcement learning to train an AI agent to play the game of Tetris. Click on the video to see it in action!
+					</p>
+					<a href="2020/06/01/tetris-agent.html" class="button small">Read More</a>
+				</article>
+				<article class="6u$ 12u$(xsmall) work-item">
+					<a href="images/thumbs/cnc_thumb.jpeg" class="image fit thumb">
+						<img src="images/thumbs/cnc_thumb.jpeg" alt=""
+							title="DIY 3-Axis CNC Machine" />
+					</a>
+					<h3>DIY 3-Axis CNC Machine</h3>
+					<p>
+						I designed and built this CNC milling machine when I was 15yrs old. The machine was designed with cost and availability of parts in mind, using commonly available parts from the hardware store. In addition to the mechanical design of the machine, I also designed all of the electronics and firmware necessary to control and operate it.
+					</p>
+					<a href="2023/05/01/cnc-project.html" class="button small">Read More</a>
+				</article>
 
-						<div class="row">
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/x1_orbit_fine_just4fun.png" class="image fit thumb">
-									<img src="images/thumbs/orbit_thumb.jpg" 
-										 alt="" 
-										 title="<a href='2020/06/13/compass-gait-walker.html'>Bifurcation and Chaos</a>"
-									/>
-								</a>
-								<a href="2020/06/13/compass-gait-walker.html">
-									<h3 class="description">Bifurcation and Chaos</h3>
-									<p>
-										In this project, I model the mechanics of a passively driven compass-gait walker and its impact dynamics as it traverses down an inclined slope.   
-										Above is an orbit diagram of the Compass-Gait Walker, plotting the inner-leg angle as the road grade (gamma) is varied.
-									</p>
-								</a>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="https://youtu.be/SqO2aBX_hxQ" data-poprox="youtube" class="image vid fit thumb">
-									<img src="images/thumbs/CG_walk_0_7.jpg" 
-										 title="<a href='2020/06/13/compass-gait-walker.html'>Compass-Gait Walker</a>"
-									/>
-								</a>
-								<a href="2020/06/13/compass-gait-walker.html">
-									<h3>Compass-Gait Walker</h3>
-									<p>Here is a video demo of the Compass-Gait Walker, simulated with the modeled dynamics.</p>
-								</a>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="https://youtu.be/eBs_t3VEXBo" data-poprox="youtube" class="image vid fit thumb">
-									<img src="images/thumbs/100.jpg" alt="" 
-										 title="<a href='2020/06/01/tetris-agent.html'>Autonomous Tetris Agent</a>"
-									/>
-								</a>
-								<a href="2020/06/01/tetris-agent.html">
-									<h3>Autonomous Tetris Agent</h3>
-									<p>In this project, I use reinforcement learning to train an AI agent to play the game of Tetris. </p>
-								</a>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/thumbs/cnc_thumb.jpeg" class="image fit thumb">
-									<img src="images/thumbs/cnc_thumb.jpeg" alt="" 
-										 title="<a href='2023/05/01/cnc-project.html'>Homemade 3-Axis CNC Machine</a>"
-									/>
-								</a>
-								<a href="2023/05/01/cnc-project.html">
-									<h3>Homemade 3-Axis CNC Machine</h3>
-									<p>This is a machine I spent about 1 year developing when I was 15/16yrs old. The entire machine was designed and built by me, including all mechanical, electrical, and firmware parts of the project.</p>
-								</a>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/cnc/starting_schematic.png" class="image fit thumb">
-									<img src="images/thumbs/starting_schematic.jpeg" alt="" 
-										 title="<a href='2023/05/01/cnc-project.html'>Homemade 3-Axis CNC Machine</a>"
-									/>
-								</a>
-								<a href="2023/05/01/cnc-project.html">
-									<h3>Homemade 3-Axis CNC Machine</h3>
-									<p>Schematic of the motor controller.</p>
-								</a>
-							</article>
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/cnc/starting_schematic.png" class="image fit thumb">
+						<img src="images/thumbs/starting_schematic.jpeg" alt=""
+							title="DIY 3-Axis CNC Machine: Motor Driver Schematic" />
+					</a>
+					<h3>DIY 3-Axis CNC Machine: Motor Driver Schematic</h3>
+					<p>Schematic of the motor drivers designed for the CNC Machine.</p>
+				</article>
 
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/Bent_R_V_Q.jpg" class="image fit thumb">
-									<img src="images/fulls/Bent_R_V_Q.jpg" alt="" 
-										 title="Modeling of a Thin Film Resistor"
-									/>
-								</a>
-								<h3>Modeling of a Thin Film Resistor</h3>
-								<p>Modeling of this thin film resitor is a stepping stone to future projects. Here I am familiarizing myself with the Lite version of FlexPDE. 
-								</p>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/R_pad2_01.jpeg" class="image fit thumb">
-									<img src="images/fulls/R_pad2_01.jpeg" alt="" 
-										 title="Resistive Film Based Position Tracking"
-									/>
-								</a>
-								<h3>Resistive Film Based Position Tracking</h3>
-								<p>
-								Extrapolating from the dummy resistor problem, we can use the same fundamental equations to model a slightly more complex problem. 
-								Suppose we'd like to track the position of an object along a surface, we can set up a simple tracking system based on a resistive film. 
-								Let the base of this object be conductive and held at a constant voltage (e.g. 3.3v). 
-								By taking voltage measurements at 3 different points on the film, we can deduce the position of this tracked object along the film.
-								Here, the conductive base of the tracked object is depicted by the rectangular 'inclusion' (H x W: 0.25 x 0.5), and voltage on the resistive film (circle, R: 2.5) is shown by equipotential curves.
-								Three regions (centered around 
-								&theta;:
-								<sup>&pi;</sup>&frasl;<sub>2</sub>
-								<sup>7&pi;</sup>&frasl;<sub>6</sub>
-								<sup>11&pi;</sup>&frasl;<sub>6</sub>)
-								act as current sinks and measurement locations.
-								</p>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="https://youtube.com/shorts/cADLaFwVIIw?feature=share" data-poprox="youtube" class="image fit thumb">
-									<img src="images/thumbs/ipendulum_padded.jpg" alt="" 
-										 title="Balancing of an Inverted Pendulum"	
-									/>
-								</a>
-								<h3>Balancing of an Inverted Pendulum</h3>
-								<p>A simple inverted pendulum system balanced by closed-loop control, designed through system identification & root-locus techniques. 
-									Demonstration in UC Santa Barbara controls lab. The system uses only linear control and relatively low control effort to prevent damage to the pinion, which drives the cart along the track.
-								</p>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/wire_sketch.png" class="image fit thumb">
-									<img src="images/fulls/wire_sketch.png" alt="" 
-										 title="Product Design in Rhino 6"	
-									/>
-								</a>
-								<h3>Product Design in Rhino 6 </h3>
-								<p>Here I was developing a product sketch in Rhino, a 3D modeling software.</p>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/render_sketch3.PNG" class="image fit thumb">
-									<img src="images/thumbs/render_sketch3_cropped.png" alt="" 
-										 title="Rendered Design"	
-									/>
-								</a>
-								<h3>Rendered Design </h3>
-								<p>Surface rendering of the same design, up close.</p>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/device_and_markers.jpg" class="image fit thumb">
-									<img src="images/fulls/device_and_markers.jpg" alt="" 
-										 title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>"
-									/>
-								</a>
-								<a href="2021/10/15/surface-tracking.html">
-									<h3>Experimental method: surface referencing against deformable soft bodies</h3>
-									<p>How does one reference a tool to a deformable soft surface?
-										By applying a matrix of fiducial markers, it is possible to create a high-precision motion tracking system along a deformable surface.
-										Even a low-cost webcam shown here is capable of delivering sub-millimeter precision when tested against ground-truth models.
-									</p>
-								</a>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/Capture_phantom_measure2_a.png" class="image fit thumb">
-									<img src="images/fulls/phantom_measure3_2.jpg" alt="" 
-										 title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>"
-									/>
-								</a>
-								<a href="2021/10/15/surface-tracking.html">
-									<h3>RE: surface referencing against deformable soft bodies</h3>
-									<div>
-										<p>System in action. Let the <em>wooden block</em>, to which the webcam is mounted, represent our device/tool of interest.
-										The block is of known dimensions and has
-										</p>
-										<div style="font-size: 75%; line-height: 1.5em; padding-left: 2em">1&#41; a set of markers on it for ground-truth comparison, measured by an external camera and 
-										<br>2&#41; a pin set in the bottom of it to mark the center of its contact with the deformable body.	
-										</div>
-										<p>
-										The system determines its contact location by comparing the two frames of reference: camera/tool body and the deformable body. 
-										</p>
-									</div>
-								</a>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/interpolation_sketch_annotated.jpg" class="image fit thumb">
-									<img src="images/fulls/interpolation_sketch_annotated.jpg" alt="" 
-										 title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>"
-									/>
-								</a>
-								<a href="2021/10/15/surface-tracking.html">
-									<h3>RE: surface referencing against deformable soft bodies</h3>
-									<p>Interpolating between the fiducial markers on the deformed surface, it is possible to back calculate the contact location w.r.t. the original undisturbed surface.
-										Above: as an example, we may use a simple linear relation to interpolate the poses.
-									</p>
-								</a>	
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/radial_measure1.jpg" class="image fit thumb">
-									<img src="images/fulls/radial_measure1.jpg" alt="" 
-										 title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>"
-									/>
-								</a>
-								<a href="2021/10/15/surface-tracking.html">
-									<h3>RE: surface referencing against deformable soft bodies</h3>
-									<p>Interestingly, even with a linear interpolation, the system is still accurate to within +/- 1mm of the ground truth.
-										This accuracy can be shown easily when using the system in 'scanning mode', in which the device is pulled away from the contact surface. 
-										Here, the actual distance of all surrounding markers w.r.t. the center marker, along the surface, is 45mm. 
-									</p>
-								</a>
-							</article>
-							<article class="6u 12u$(xsmall) work-item">
-								<a href="images/fulls/0402_soldering_cropped.jpg" class="image fit thumb">
-									<img src="images/fulls/0402_soldering_cropped.jpg" alt="" 
-										 title="SMD Hand Soldering"	
-									/>
-								</a>
-								<h3>SMD hand soldering</h3>
-								<p>Typical SMD soldering work done under the microscope. This was a PCB designed and manually soldered for a past project. 
-									0402 package shown here was among the finest-pitched packages soldered for this board, alongside some BGA bluetooth modules.
-									For the best solder joints, my preferred method is to first tin all solder pads; then with a generous amount of tacky flux, tack down components, and solder with a heat gun.
-									Note that this method does not involve solder paste. 
-								</p>
-							</article>
-							<article class="6u$ 12u$(xsmall) work-item">
-								<a href="images/fulls/magnet_wire_prototyping_2.jpg" class="image fit thumb">
-									<img src="images/fulls/magnet_wire_prototyping_2.jpg" alt="" 
-										 title="Rapid Prototyping with Medium to High Pitch SMDs"	
-									/>
-								</a>
-								<h3>Rapid prototyping with medium to high pitch SMDs</h3>
-								<p>This is a great way to rapidly prototype with medium to high pitch surface-mounted devices, without the wait time of a prototype-run PCB. 
-									Kapton&reg; tape serves as a surface for gluing down SMT devices as well as an insulation barrier between device and perf-board. 
-									Short lengths of magnet wire -- <em>with meltable insulation</em> -- are used to make point-to-point solder connections.
-								</p>
-							</article>
+				<article class="6u$ 12u$(xsmall) work-item">
+					<a href="images/fulls/Bent_R_V_Q.jpg" class="image fit thumb">
+						<img src="images/fulls/Bent_R_V_Q.jpg" alt="" title="Modeling of a Thin Film Resistor" />
+					</a>
+					<h3>Modeling of a Thin Film Resistor</h3>
+					<p>
+						Here I am modeling current flow and equipotential lines within a <em>thin-film resistor</em>. Solved using FEA with FlexPDE software.
+					</p>
+				</article>
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/R_pad2_01.jpeg" class="image fit thumb">
+						<img src="images/fulls/R_pad2_01.jpeg" alt="" title="Resistive Film Based Position Tracking" />
+					</a>
+					<h3>Resistive-Film Based Position Tracking</h3>
+					<p>
+						Measuring voltage at three points along the perimeter of a thin-film resistor, it is possible to locate an object serving as a source within the bounds of the film. Note that the object of interest has a conductive base, which appears as a rectangular 'inclusion' in the equipotential plot.
+					</p>
+				</article>
+				<article class="6u$ 12u$(xsmall) work-item">
+					<a href="https://youtube.com/shorts/cADLaFwVIIw?feature=share" data-poprox="youtube"
+						class="image fit thumb">
+						<img src="images/thumbs/ipendulum_padded.jpg" alt=""
+							title="Balancing of an Inverted Pendulum" />
+					</a>
+					<h3>Balancing of an Inverted Pendulum</h3>
+					<p>
+						An inverted pendulum system balanced by closed-loop control, designed through system identification root-locus techniques. Demonstration in UC Santa Barbara controls lab. 
+					</p>
+				</article>
+				
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/render_sketch3.PNG" class="image fit thumb">
+						<img src="images/thumbs/render_sketch3_cropped.png" alt="" title="Concept Product Design" />
+					</a>
+					<h3>Concept Product Design </h3>
+					<p>
+						This is a concept design I made for a handheld measurement device. The design focused on ergonomics, hence featuring a stippled rubber sleeve, two easily accessed thumb buttons, a magnetic charging/data port, and a large physical dial on the top face. Designed and rendered using Rhino. 
+					</p>
+				</article>
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/device_and_markers.jpg" class="image fit thumb">
+						<img src="images/fulls/device_and_markers.jpg" alt=""
+							title="Surface Referencing against Deformable Soft Bodies" />
+					</a>
+					<h3>Experimental method: surface referencing against deformable soft bodies</h3>
+					<p>How does one reference a tool to a deformable soft surface? By applying a matrix of fiducial markers, it is possible to create a high-precision motion tracking system along a deformable surface. Even a low-cost webcam shown here is capable of delivering sub-millimeter precision when its physical relations are appropriately leveraged.
+					</p>
+					<a href="2021/10/15/surface-tracking.html" class="button small">Read More</a>
+				</article>
+				<!-- <article class="6u$ 12u$(xsmall) work-item">
+					<a href="images/fulls/Capture_phantom_measure2_a.png" class="image fit thumb">
+						<img src="images/fulls/phantom_measure3_2.jpg" alt=""
+							title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>" />
+					</a>
+					<a href="2021/10/15/surface-tracking.html">
+						<h3>RE: surface referencing against deformable soft bodies</h3>
+						<div>
+							<p>System in action. Let the <em>wooden block</em>, to which the webcam is mounted,
+								represent
+								our device/tool of interest.
+								The block is of known dimensions and has
+							</p>
+							<div style="font-size: 75%; line-height: 1.5em; padding-left: 2em">1&#41; a set of markers
+								on it
+								for ground-truth comparison, measured by an external camera and
+								<br>2&#41; a pin set in the bottom of it to mark the center of its contact with the
+								deformable body.
+							</div>
+							<p>
+								The system determines its contact location by comparing the two frames of reference:
+								camera/tool body and the deformable body.
+							</p>
 						</div>
-						
-						<ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul>
-					</section>
+					</a>
+				</article>
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/interpolation_sketch_annotated.jpg" class="image fit thumb">
+						<img src="images/fulls/interpolation_sketch_annotated.jpg" alt=""
+							title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>" />
+					</a>
+					<a href="2021/10/15/surface-tracking.html">
+						<h3>RE: surface referencing against deformable soft bodies</h3>
+						<p>Interpolating between the fiducial markers on the deformed surface, it is possible to back
+							calculate the contact location w.r.t. the original undisturbed surface.
+							Above: as an example, we may use a simple linear relation to interpolate the poses.
+						</p>
+					</a>
+				</article>
+				<article class="6u$ 12u$(xsmall) work-item">
+					<a href="images/fulls/radial_measure1.jpg" class="image fit thumb">
+						<img src="images/fulls/radial_measure1.jpg" alt=""
+							title="<a href='2021/10/15/surface-tracking.html'>Surface Referencing against Deformable Soft Bodies</a>" />
+					</a>
+					<a href="2021/10/15/surface-tracking.html">
+						<h3>RE: surface referencing against deformable soft bodies</h3>
+						<p>Interestingly, even with a linear interpolation, the system is still accurate to within +/-
+							1mm
+							of the ground truth.
+							This accuracy can be shown easily when using the system in 'scanning mode', in which the
+							device
+							is pulled away from the contact surface.
+							Here, the actual distance of all surrounding markers w.r.t. the center marker, along the
+							surface, is 45mm.
+						</p>
+					</a>
+				</article> -->
+				<article class="6u 12u$(xsmall) work-item">
+					<a href="images/fulls/0402_soldering_cropped.jpg" class="image fit thumb">
+						<img src="images/fulls/0402_soldering_cropped.jpg" alt="" title="SMD Hand Soldering" />
+					</a>
+					<h3>SMD hand soldering</h3>
+					<p>Typical SMD soldering work done under the microscope. This was a PCB designed for a past project. 0402 components shown here were among the finest-pitched packages soldered for this board, alongside some BGA bluetooth modules. For the best solder joints, my preferred method is to first tin all solder pads; then with a generous amount of tacky flux, tack down components, and solder with a heat gun. This method does not require solder paste and delivers clean repeatable results!
+					</p>
+				</article>
+				<article class="6u$ 12u$(xsmall) work-item">
+					<a href="images/fulls/magnet_wire_prototyping_2.jpg" class="image fit thumb">
+						<img src="images/fulls/magnet_wire_prototyping_2.jpg" alt=""
+							title="Rapid Prototyping with Medium to High Pitch SMDs" />
+					</a>
+					<h3>Rapid prototyping with medium to high pitch SMDs</h3>
+					<p>Shown above is how I often rapidly prototype with medium to high pitch surface-mounted devices without ordering a custom PCB design. Kapton&reg; tape is utilized as a surface for gluing down SMT devices and serves as an insulation barrier between devices and the perf-board. Short lengths of magnet wire <em>with meltable insulation</em> are then used to make point-to-point solder connections. This method is fast, robust, and sidesteps the turnaround time of custom order PCBs!
+					</p>
+				</article>
+			</div>
 
-				<!-- Three -->
-					<section id="three">
-						<h2>Get In Touch</h2>
-						<p>Thanks for visiting! Please feel free to send me an email.</p>
-						<div class="row">
-							<!--
+			<ul class="actions">
+				<li><a href="#" class="button">Full Portfolio</a></li>
+			</ul>
+		</section>
+
+		<!-- Three -->
+		<section id="three">
+			<h2>Get In Touch</h2>
+			<p>Thanks for visiting! Please feel free to send me an email.</p>
+			<div class="row">
+				<!--
 							<div class="8u 12u$(small)">
 								<form method="post" action="#">
 									<div class="row uniform 50%">
@@ -276,30 +247,30 @@ title: "ssun"
 								</ul>
 							</div>
 							-->
-							<div class="4u$ 12u$(small)">
-								<ul class="labeled-icons">
-									<!--<li>
+				<div class="4u$ 12u$(small)">
+					<ul class="labeled-icons">
+						<!--<li>
 										<h3 class="icon fa-home"><span class="label">Address</span></h3>
 										1234 Somewhere Rd.<br />
 										Nashville, TN 00000<br />
 										United States
 									</li>
 									-->
-									<li>
-										<h3 class="icon fa-mobile"><span class="label">Phone</span></h3>
-										(650)455-6484
-									</li>
-									<li>
-										<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
-										<a href="#">yellowpurplebird@gmail.com</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
+						<li>
+							<h3 class="icon fa-mobile"><span class="label">Phone</span></h3>
+							(650)455-6484
+						</li>
+						<li>
+							<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
+							<a href="#">yellowpurplebird@gmail.com</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
 
-				<!-- Four -->
-				<!--
+		<!-- Four -->
+		<!--
 					<section id="four">
 						<h2>Elements</h2>
 
@@ -617,29 +588,33 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 					</section>
 				-->
+	</div>
 
-			</div>
+	<!-- Footer -->
+	<footer id="footer">
+		<ul class="icons">
+			<!--<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>-->
+			<li><a href="https://ssun5.github.io/" class="icon fa-github"><span class="label">Github</span></a></li>
+			<!--<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>-->
+			<li><a href="mailto:yellowpurplebird@gmail.com" class="icon fa-envelope-o"><span
+						class="label">Email</span></a></li>
+		</ul>
+		<ul class="copyright">
+			<li>&copy;
+				<script>document.write(/\d{4}/.exec(Date())[0])</script> Shan-Wei Sun
+			</li>
+			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+	</footer>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<!--<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>-->
-					<li><a href="https://ssun5.github.io/" class="icon fa-github"><span class="label">Github</span></a></li>
-					<!--<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>-->
-					<li><a href="mailto:yellowpurplebird@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> Shan-Wei Sun</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</footer>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+</body>
 
-	</body>
 </html>
