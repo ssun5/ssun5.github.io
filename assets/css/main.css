@@ -2492,6 +2492,7 @@
 		input[type="reset"].small,
 		input[type="button"].small,
 		.button.small {
+			margin-top: 1em;
 			font-size: 0.8em;
 		}
 
