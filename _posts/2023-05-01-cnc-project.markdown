@@ -35,17 +35,17 @@ I designed this machine to be built from commonly available hardware store items
 
 For actuation of the machine, each axis is driven by a stepper motor via the &frac14;" - 20 threaded rods. And each motor is driven by custom-designed high power motor controllers. The stepper motors were found through a liquidation sale, which meant that they came with minimal information on their specification. These cheap motors later posed many challenges to the design of the motor controller and the motion control algorithm, which will be discussed in detail in this post.
 
-The resulting system is exceptionally low-cost, but achieving this required overcoming many design challenges.
+The resulting system is exceptionally low-cost, but achieving this required overcoming many design hurdles.
 
 ## Challenges ##
 
-Almost all of the challenges arise from using less than optimal components for the drive trains. First, we have the &frac14;" - 20 threaded rods, which are really not optimal for driving linear motion. It is slow, as it requires many revolutions from the actuating motor to move a given distance (Note that the '20' denotes the number of revolutions per inch). In other words, it requires fast stepping from the stepper motors to move the machine effectively. In addition they also tend to be quite stiff to drive: to combat backlash, I used plastic nuts with very tight thread meshing along each axis, which in turn creates a lot of friction. The consequence of this is that the drive train requires moderately high driving torque (proportional to current) from the motors to avoid stalling.
+Almost all of the challenges arise from using less than optimal components for the drive trains. First, we have the &frac14;" - 20 threaded rods, which are suboptimal for driving linear motion. They are slow, requiring many revolutions from the actuating motor to move a given distance (Note that the '20' denotes the number of revolutions per inch). In other words, it requires fast stepping from the stepper motors to move the machine effectively. In addition they also tend to be quite stiff to drive: to combat backlash, I used plastic nuts with very tight thread meshing along each axis, which in turn creates a lot of friction. The consequence of this is that the drive train requires moderately high driving torque (proportional to current) from the motors to avoid stalling.
 <div>
 <img id="Figure 2" src="/images/fulls/cnc/challenges.jpg" class="fit image">
 <p><b>Figure 2: </b> major sources of challenges</p>
 </div>
 
-The problem is really compounded by the fact that we have these cheap stepper motors with relatively poor specifications. These motors have high inductances and low resistances which result in large characteristic time constants &#151; slow actuation. At the same time, they are unable to handle large steady-state currents which aid in providing driving torque.
+The problem is further compounded by poor characteristics of the stepper motors. The motors have high inductances and low resistances which result in large characteristic time constants &#151; slow actuation. At the same time, they are unable to handle large steady-state currents which aid in providing driving torque.
 
 The result of all of this is that the custom driver circuits need to be high-powered and sophisticated with its timing and driving sequence to use the motors effectively. 
 

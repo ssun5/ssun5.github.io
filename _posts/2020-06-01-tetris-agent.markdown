@@ -122,8 +122,10 @@ Below are the results of training an agent to play on an 8 x 8 board, with a bat
 
 </section>
 
+### Assessing Performance ###
+
 One question that arises here is 'how do we know if the algorithm is a good algorithm?'. We have already defined the score as the measure of performance, but how do we define 'good' performance? It is reasonable to think of the quality of play by simply watching the agent play out the game (hence, the reduced game board, to observe the agent losing), but this is still fairly subjective. A more objective measure is by considering the number of pieces spawned w.r.t. the total number of rows cleared. Consider the case of an 8 x 8 board. In an ideal schenario, in which only the square puzzle blocks are played, it would take 4 of these puzzle pieces to clear 2 rows; the optimal ratio of spawned pieces to cleared rows for an 8-wide board is thus 2. 
 
-In the demo case the final ratio at the end of the game is 2.038 (801 spawned pieces, 393 rows cleared). The resulting ratio is close to the ideal value but perhaps still has room for improvement. With more refined training methods and significantly more time spent on training, it may be possible to bring this value cloaser to the ideal value. 
+In the demo case the final ratio at the end of the game is 2.038 (801 spawned pieces, 393 rows cleared). The resulting ratio is close to the ideal value but perhaps still has room for improvement. With more refined training methods and significantly more time spent on training, it may be possible to bring this value closer to the ideal value. 
 
 Out of curiosity I also tried the agent on a full sized 20 x 10 board, even though the agent has only been trained to optimize for an 8 x 8 board. In the case of a 10-wide board, we again imagine the case of only dropping square puzzle blocks. In this case, it would take 5 pieces to clear 2 rows &#151; making the ideal ratio 2.5. The time for a game to play until completion was significant &#151; a good sign for a quality agent. The agent played through 100k pieces without the game terminating, clearing 3999 rows, resulting in a ratio of 2.5001. Excellent results! I am quite satisfied :).
