@@ -24,7 +24,7 @@ location:           San Francisco, CA
 phone:              1 650 455 6484
 email:              yellowpurplebird@gmail.com # change this to your email to receive free emails for your contact submissions via Slapform.com
 
-gems:
+plugins:
   - "jekyll-feed"
   - "jekyll-seo-tag"
   - "jekyll-paginate"
