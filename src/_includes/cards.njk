@@ -1,0 +1,21 @@
+{# cards.njk - render a list of cards from an array of items
+   Usage:
+   {% from "_includes/cards.njk" import render_cards %}
+   {{ render_cards(items) }}
+   where items is an array of { image: '/assets/img/..', title: 'Title', caption: '...', tags: ['#one'] }
+#}
+
+{% macro render_cards(items) %}
+<div class="card-container mathjax_ignore">
+  {% for it in items %}
+    <div class="card">
+      <div>
+        <img class="object-contain w-full h-full" src="{{ it.image }}" alt="{{ it.title | escape }}">
+      </div>
+      <div class="caption">
+        {{ it.caption }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endmacro %}

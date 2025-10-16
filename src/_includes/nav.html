@@ -1,0 +1,27 @@
+<nav class="h-screen">
+    <button id="menu-toggle-btn" class="px-4 p-4 -mt-4 mb-4 text-3xl md:hidden">&#9776;</button>
+    <div id="nav-links" class="flex-col hidden md:flex">
+        <div>
+            <a href="/index">Home</a>
+        </div>
+        <div>
+            <a href="/about">About</a>
+        </div>
+        <div>
+            <a href="/contact">Contact</a>
+        </div>
+        <div>
+            <a href="/posts/post1">Long Project Name</a>
+        </div>
+        <div>
+            <a href="/posts/post0">Post 0</a>
+        </div>
+    </div>
+</nav>
+<script defer>
+    // Toggle navigation visibility on button click
+    document.getElementById("menu-toggle-btn").addEventListener("click", function () {
+        const nav = document.getElementById("nav-links");
+        nav.classList.toggle("hidden");
+    });
+</script>

@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+/* src/input.css */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-text-primary: #eee;
+  --color-text-bright: white;
+  --color-text-muted: var(--color-neutral-600);
+  --color-text-secondary: #4545ff;
+  --color-text-highlight: #9090ff;
+  --color-text-accent: #ed7631;
+  --color-text-p: var(--color-gray-400);
+  --color-bg: var(--color-neutral-950);
+
+  --eq-label-color: var(--color-text-bright);
+  --eq-label-hover: var(--color-text-secondary);
+    --eq-label-active: var(--color-text-highlight);
+
+  /* --font-display: "Satoshi", "sans-serif"; */
+  /* Define other custom theme properties here */
+}
+@layer base {
+  html {
+    @apply scroll-smooth scroll-p-[45%];
+  }
+  header {
+    @apply mb-12;
+  }
+  body {
+    @apply flex h-screen my-24 mx-8; 
+    background-color: var(--color-bg);
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply my-8;
+    font-family: var(--font-display);
+    color: var(--color-text-bright);
+  }
+  /* main */
+  main {
+    @apply flex-grow pt-0 pb-8 px-8;
+    /* overflow-y-auto */
+  }
+  button:hover {
+    color: var(--color-text-secondary);
+  }
+  button:active {
+    color: var(--color-text-highlight);
+  }
+  a {
+    color: var(--color-text-bright);
+  }
+  a:hover {
+    color: var(--color-text-secondary);
+  }
+  a:active {
+    color: var(--color-text-highlight);
+  }
+  a > * {
+    color: inherit !important;
+  }
+  h1 {
+    @apply text-4xl py-4 font-extrabold;
+    border-bottom: 4px dashed;
+  }
+  h2 {
+    @apply text-3xl py-4 font-bold;
+  }
+  h3 {
+    @apply text-2xl py-4 font-semibold;
+  }
+  h4 {
+    @apply text-xl py-4 font-semibold;
+  }
+  h5 {
+    @apply text-lg py-4 font-semibold;
+  }
+  h6 {
+    @apply text-lg py-4 italic;
+  }
+  p {
+    @apply text-base py-2;
+    color: var(--color-text-p);
+  }
+  strong {
+    color: var(--color-text-bright);
+  }
+  em {
+    color: var(--color-text-bright);
+  }
+  b {
+    color: var(--color-text-bright);
+  }
+  i {
+    color: var(--color-text-bright);
+  }
+
+  /* MathJax */
+  mjx-container[jax="SVG"] {
+    display: inline-block; /* Ensure inline math is displayed inline */
+    vertical-align: middle; /* Align inline math properly */
+  }
+  /* inline \ref numbers that MathJax renders */
+  mjx-container[jax="SVG"] .MathJax_ref use,
+  mjx-container[jax="SVG"] .MathJax_ref path {
+    color: var(--eq-label-color) !important;
+    fill: var(--eq-label-color) !important;
+    stroke: var(--eq-label-color) !important;
+  }
+  /* Hover state */
+  mjx-container[jax="SVG"] a:hover use,
+  mjx-container[jax="SVG"] a:hover path,
+  mjx-container[jax="SVG"] a:hover text {
+    fill: var(--eq-label-hover) !important;
+    stroke: var(--eq-label-hover) !important;
+  }
+  /* Active (while pressing the mouse) */
+  mjx-container[jax="SVG"] a:active use,
+  mjx-container[jax="SVG"] a:active path,
+  mjx-container[jax="SVG"] a:active text {
+    fill: var(--eq-label-active) !important;
+    stroke: var(--eq-label-active) !important;
+  }
+  /* Keyboard focus (accessibility) */
+  mjx-container[jax="SVG"] a:focus {
+  /* show subtle focus ring around the SVG area if desired */
+  outline: 2px solid var(--eq-label-hover);
+  outline-offset: 2px;
+  }
+  mjx-container[jax="SVG"] a:focus use,
+  mjx-container[jax="SVG"] a:focus path,
+  mjx-container[jax="SVG"] a:focus text {
+  fill: var(--eq-label-hover) !important;
+  stroke: var(--eq-label-hover) !important;
+  }
+}
+
+@layer components {
+  /* navigation */
+  #nav-links {
+    @apply mx-4 w-1/3 min-w-fit space-y-4;
+  }
+  #nav-links a{
+    @apply flex flex-2 border-l-3 px-4;
+    color: var(--color-text-bright);
+  }
+  #nav-links a:hover {
+    color: var(--color-text-secondary);
+    border-color: var(--color-text-secondary);
+  }
+  #nav-links a:active {
+    color: var(--color-text-highlight);
+    border-color: var(--color-text-highlight);
+  }
+
+  /* cards */
+  .card-container {
+    @apply flex flex-wrap flex-col justify-start sm:flex-row
+    py-4;
+  }
+  .card {
+    @apply flex flex-col w-xs flex-initial max-w-fit
+    overflow-hidden justify-start
+    rounded-xl shadow-lg shadow-neutral-500 border-4 border-neutral-900 m-4 max-h-[100vh];
+  }
+  .card:hover {
+    @apply scale-105 shadow-xl ease-in-out transition-all duration-500 cursor-default;
+  }
+  .card > .title {
+    @apply px-6 py-4 text-xl font-bold;
+  }
+  .card > div.caption {
+    @apply px-6 pt-0 pb-6 font-display text-sm;
+    color: var(--color-text-p);
+  }
+  .card > :first-child{
+    @apply bg-white
+    h-64 flex-initial;
+  }
+  .card > :last-child{
+    @apply
+    mt-auto px-6 pb-6 pt-4
+    self-end;
+  }
+  .card button {
+    @apply font-semibold text-sm rounded-full py-1 px-3
+    text-neutral-700 border-neutral-700 bg-gray-200;
+  }
+  .card button:hover{
+    @apply ease-in-out transition-colors duration-200;
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+    background-color: var(--color-text-secondary);
+  }
+  .card button:active{
+    background-color: var(--color-text-highlight);
+  }
+}
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  /* Add more utility classes here */
+}

@@ -1,0 +1,15 @@
+# Node modules
+/node_modules
+
+# Eleventy output directory
+/public/
+
+# Environment variables
+.env
+
+# Editor-specific files (examples)
+.vscode/
+.DS_Store
+
+# Log files
+*.log
