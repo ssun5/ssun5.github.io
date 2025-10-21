@@ -5,17 +5,27 @@
    where items is an array of { image: '/assets/img/..', title: 'Title', caption: '...', tags: ['#one'] }
 #}
 
-{% macro render_cards(items) %}
+{% macro render_cards(items) -%}
 <div class="card-container mathjax_ignore">
-  {% for it in items %}
-    <div class="card">
-      <div>
-        <img class="object-contain w-full h-full" src="{{ it.image }}" alt="{{ it.title | escape }}">
-      </div>
-      <div class="caption">
-        {{ it.caption }}
-      </div>
+  {%- for it in items %}
+  <div class="card">
+    <div class="top-container">
+        <img class="card-image" src="{{ it.image }}" alt="{{ it.title | escape }}">
     </div>
-  {% endfor %}
+    <div class="break"></div>
+    <div class="bottom-container">
+    {%- if it.title -%}
+      <div class="title">{{ it.title | escape }}</div>
+    {%- endif -%}
+    {%- if it.caption -%}
+      <div class="caption">{{ it.caption | escape }}</div>
+    {%- endif -%}
+    {%- if it.tags -%}
+      <div class="tags">{%- for tag in it.tags -%}<span class="tag">{{ tag | escape }}</span>{%- endfor %}</div>
+    {%- endif -%}
+    </div>
+  </div>
+  {%- endfor %}
 </div>
-{% endmacro %}
+{%- endmacro %}
+

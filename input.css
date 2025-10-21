@@ -158,36 +158,57 @@
     color: var(--color-text-highlight);
     border-color: var(--color-text-highlight);
   }
+  .captioned {
+    @apply relative;
+  }
+  .captioned::after {
+    content: '';
+    background-image: linear-gradient(to right, var(--color-text-secondary), var(--color-text-highlight));
+    height: 3px;
+    border-radius: 100px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    @apply absolute;
+  }
 
   /* cards */
   .card-container {
-    @apply flex flex-wrap flex-col justify-start sm:flex-row
-    py-4;
+    @apply flex justify-start flex-wrap flex-col md:flex-row 
+    gap-4 basis-sm;
   }
   .card {
-    @apply flex flex-col w-xs flex-initial max-w-fit
-    overflow-hidden justify-start
-    rounded-xl shadow-lg shadow-neutral-500 border-4 border-neutral-900 m-4 max-h-[100vh];
+    @apply flex flex-wrap flex-row content-start
+    overflow-clip w-full md:w-min
+    rounded-xl shadow-lg shadow-neutral-500 border-4 border-neutral-900;
   }
   .card:hover {
     @apply scale-105 shadow-xl ease-in-out transition-all duration-500 cursor-default;
   }
-  .card > .title {
-    @apply px-6 py-4 text-xl font-bold;
+  .card > .top-container{
+    @apply md:h-[clamp(10rem,20rem,60vh)] w-max basis-1 flex-auto;
   }
-  .card > div.caption {
-    @apply px-6 pt-0 pb-6 font-display text-sm;
+  .card .card-image{
+    @apply bg-amber-500 h-full object-contain shrink-0;
+  }
+  .card > .break{
+    @apply w-full h-0
+  }
+  .card > .bottom-container{
+    @apply flex flex-wrap basis-1 flex-auto gap-4 content-start;
+  }
+  .card .title {
+    @apply px-6 text-xl font-bold bg-blue-600 w-full;
+  }
+  .card .caption {
+    @apply px-6 font-display text-sm bg-red-800 w-full;
     color: var(--color-text-p);
   }
-  .card > :first-child{
-    @apply bg-white
-    h-64 flex-initial;
-  }
-  .card > :last-child{
+  /* .card > :last-child{
     @apply
-    mt-auto px-6 pb-6 pt-4
+    mt-auto px-6 pb-6
     self-end;
-  }
+  } */
   .card button {
     @apply font-semibold text-sm rounded-full py-1 px-3
     text-neutral-700 border-neutral-700 bg-gray-200;

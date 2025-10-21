@@ -40,16 +40,14 @@ tags: ["control theory","matlab"]
   </math>
   .
 </p>
-<div class="mathjax_ignore">
 {% set items = [
-  { image: '/assets/img/test_image.png', title: 'Logistic map', caption: 'Phase portrait / visualization (example)' },
+  { image: '/assets/img/test_image.png', title: 'Logistic map', caption: 'Phase portrait / visualization (example) with a lot of text. like more than you want to put into a section but we need it to test this block' },
   { image: '/assets/img/test_image2.png', title: 'Bifurcation diagram', caption: 'Bifurcation illustration (placeholder)' },
   { image: '/assets/img/test_image3.png', caption: 'The quick brown fox jumped over your mom. and your mom was not amused.' }
 ] %}
 
 {% from "cards.njk" import render_cards %}
-{{ render_cards(items) }}
-</div>
+{{ render_cards(items) | safe }}
 
 
 
