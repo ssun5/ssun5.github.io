@@ -26,58 +26,13 @@ refer to eqn \ref{eq:einstein}
   <h2>{{ post.data.title }}</h2>
 {% endfor %}
 
-<div class="card-container">
-<!-- card-nth: look for the mark -->
-<!-- include image of signatures -->
-<div>
+{% set items = [
+  { image: '/assets/img/test_image.png', title: 'Flexible Robotic Tentacle', caption: 'Caption for test image 1. Should show an image of a robotic tentacle.' },
+  { image: '/assets/img/test_image.png', title: 'Flexible Robotic Tentacle', caption: 'Caption for test image 1. Should show an image of a robotic tentacle.' }
+] %}
 
-</div>
-
-
-</div>
-
-<div class="card-container">
-    <!-- card1 -->
-    <div class="card">
-        <div>
-            <img class="object-contain w-full h-full" src="/assets/img/test_image.png" alt="Tentacle arms">
-        </div>
-        <div class="title">
-            <div class="font-bold text-xl mb-2">Test Image 1</div>
-            <p class="text-gray-700 text-base">
-                Above should show a picture of test image 1, depicting robotic tentacle arms.
-            </p>
-        </div>
-        <div>
-            <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#one</span>
-            <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#two</span>
-            <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#animal</span>
-        </div>
-    </div>
-    <!-- card2 -->
-    <div class="card">
-        <div>
-            <img class="object-contain w-full h-full" src="/assets/img/test_image.png" alt="Tentacle arms">
-        </div>
-        <div class="title">
-            <div class="font-bold text-xl mb-2">Test Image 1</div>
-            <p class="text-gray-700 text-base">
-                Above should show a picture of test image 1, depicting robotic tentacle arms.
-            </p>
-        </div>
-        <div>
-            <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#one</span>
-            <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#two</span>
-            <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#animal</span>
-        </div>
-    </div>
-</div>
+{% from "cards.njk" import render_cards %}
+{{ render_cards(items) | safe }}
 
 **md strong**
 <b>html bold</b>

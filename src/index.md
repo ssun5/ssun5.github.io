@@ -7,41 +7,78 @@ eleventyImport:
 
 Hello! My name is **Shan-Wei Sun** and here you can check out some my projects. Please enjoy. 
 
-# Hardware
+# Recent Works
 
-<p class="captioned">Hardware electronics, circuit design, PCBA design, </p>
+{% set items = [
+  { image: '/assets/img/test_image.png', title: 'Flexible Robotic Tentacle', caption: 'Caption for test image 1. Should show an image of a robotic tentacle.' },
+  { image: '/assets/img/Bent_R_V_Q.jpg', title: 'Modeling of a Thin-Film Resistor', caption: 'Thin-film resistor model showing equipotential lines, current flow, and calculated resistance.' },
+  { image: '/assets/img/zs_boards.jpeg', title: 'Look for the Mark', caption: 'Many PCBs I have designed bare my signature. Look around, you might find one!' }
+] %}
 
-<div class="mathjax_ignore flex flex-row items-stretch justify-start gap-3 flex-wrap">
-    <div class="h-64">
-        <img class="h-full object-contain shrink-0 bg-red-500" src="/assets/img/test_image.png"> 
+{% from "cards.njk" import render_cards %}
+{{ render_cards(items) | safe }}
+
+
+<article style="overflow:hidden;">
+    <img class="left" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
+    <h2>Test Title</h2>
+    <p>floating images test. here is a paragraph of stuff to see how the text wraps around the image.</p>
+
+    <p>here is even more text to see how it wraps around the image. hopefully it looks good and not too crazy.</p>
+</article>
+
+<article style="overflow:hidden;">
+    <img class="right" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
+    <h2>Test Title</h2>
+    <p>floating images test. here is a paragraph of stuff to see how the text wraps around the image. This image will be on the right side of the text.</p>
+</article>
+
+here is even more text to see how it wraps around the image. please behave.
+
+<div class="card-left">
+    <div class="img-container bg-blue-500">
+        <p>left container</p>
     </div>
-    <div class="h-64">
-        <img class="h-full object-contain shrink-0 bg-blue-500" src="/assets/img/test_image2.png">
+    <div class="txt-container bg-red-800">
+        <p>right container</p>
     </div>
 </div>
 
-<div class="mathjax_ignore flex flex-row items-stretch justify-start gap-3 flex-wrap">
-    <div class="grid grid-rows-1">
-        <img class="h-64 w-auto object-contain shrink-0 bg-red-500" src="/assets/img/test_image.png"> 
+<article style="overflow:hidden;">
+    <img class="left" src="assets/img/render_sketch.PNG" alt="render sketch">
+    <p>image with some text within an article wrapper. here's some more to fill some space. ABC DEFGHI JKLM NOP QRST UVWXYZ.</p>
+</article>
+
+<article style="overflow:hidden;">
+    <div class="grid-container left">
+        <img class="card-image aspect-square object-cover object-top" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
+        <img class="card-image aspect-square object-cover" src="/assets/img/soft_tracker/device_top.jpg" alt="device_view2">
+        <img class="card-image aspect-square object-cover object-[25%_25%]" src="/assets/img/soft_tracker/device_and_markers.jpg" alt="device_view3">
+        <img class="card-image aspect-square object-cover" src="/assets/img/soft_tracker/measuring_foam_form.jpg" alt="device_view4">
     </div>
-    <div class="grid grid-rows-1">
-        <img class="h-64 w-auto object-contain shrink-0 bg-blue-500" src="/assets/img/test_image2.png">
-    </div>
-</div>
+    <p>some grid here with images</p>
+</article>
 
 
-
-<div class="mt-5 mathjax_ignore flex flex-row items-stretch justify-start gap-3 flex-wrap">
-    <div class="flex basis-sm flex-auto flex-col items-center bg-amber-500">
-        <img class=" bg-red-500" src="/assets/img/test_image.png">
-        <p>here's some text to go with image 1 test image</p> 
+<div class="card-container mathjax_ignore">
+  <div class="card">
+    <div class="top-container">
+        <img class="card-image aspect-square object-cover object-top" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
     </div>
-    <div class="flex basis-3xl flex-auto flex-col items-center bg-pink-700">
-        <img class=" bg-red-500" src="/assets/img/test_image2.png">
-        <p>here's some text to go with image 1 test image. a very long caption can maybe go here to see how every reacts to resizing and to test responsivness of the web page</p> 
+  </div>
+  <div class="card">
+    <div class="top-container">
+        <img class="card-image aspect-square object-cover" src="/assets/img/soft_tracker/device_top.jpg" alt="device_view2">
     </div>
-    <div class="flex basis-xl flex-auto flex-col">
-        <img class="h-100 object-cover bg-red-500" src="/assets/img/test_image3.png">
-        <p>here's some text to go with image 1 test image</p> 
+  </div>
+  <div class="card">
+    <div class="top-container">
+        <img class="card-image aspect-square object-cover object-[25%_25%]" src="/assets/img/soft_tracker/device_and_markers.jpg" alt="device_view3">
     </div>
+  </div>
+  <div class="card">
+    <div class="top-container">
+        <img class="card-image aspect-square object-cover" src="/assets/img/soft_tracker/measuring_foam_form.jpg" alt="device_view4">
+    </div>
+  </div>
 </div>

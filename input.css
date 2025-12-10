@@ -38,7 +38,6 @@
     color: var(--color-text-primary);
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply my-8;
     font-family: var(--font-display);
     color: var(--color-text-bright);
   }
@@ -175,7 +174,7 @@
   /* cards */
   .card-container {
     @apply flex justify-start flex-wrap flex-col md:flex-row 
-    gap-4 basis-sm;
+    gap-6 basis-sm my-6;
   }
   .card {
     @apply flex flex-wrap flex-row content-start
@@ -186,22 +185,22 @@
     @apply scale-105 shadow-xl ease-in-out transition-all duration-500 cursor-default;
   }
   .card > .top-container{
-    @apply md:h-[clamp(10rem,20rem,60vh)] w-max basis-1 flex-auto;
+    @apply h-min md:h-[clamp(10rem,20rem,60vh)] w-full md:w-max basis-1 flex-auto;
   }
   .card .card-image{
-    @apply bg-amber-500 h-full object-contain shrink-0;
+    @apply h-auto md:h-full object-contain shrink-0;
   }
   .card > .break{
     @apply w-full h-0
   }
   .card > .bottom-container{
-    @apply flex flex-wrap basis-1 flex-auto gap-4 content-start;
+    @apply flex flex-wrap basis-1 flex-auto gap-4 content-start my-4;
   }
   .card .title {
-    @apply px-6 text-xl font-bold bg-blue-600 w-full;
+    @apply px-6 text-xl font-bold w-full;
   }
   .card .caption {
-    @apply px-6 font-display text-sm bg-red-800 w-full;
+    @apply px-6 font-display text-sm w-full text-balance;
     color: var(--color-text-p);
   }
   /* .card > :last-child{
@@ -221,6 +220,30 @@
   }
   .card button:active{
     background-color: var(--color-text-highlight);
+  }
+  img.left {
+    @apply float-left clear-left mr-6 my-4 h-full w-full md:w-[clamp(20rem,30%,80rem)]
+    rounded-xl;
+  }
+  img.right {
+    @apply float-right clear-right ml-6 my-4 h-full w-full md:w-[clamp(20rem,30%,80rem)]
+    rounded-xl;
+  }
+  img.center {
+    @apply block mx-auto my-4 w-full md:w-[clamp(20rem,80%,80rem)]
+    rounded-xl;
+  }
+  .grid-container {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+  .grid-container.left {
+    @apply float-left clear-left mr-6 my-4 h-full w-full md:w-[clamp(20rem,60%,200rem)];
+  }
+  .grid-container.right {
+    @apply float-right clear-right ml-6 my-4 h-full w-full md:w-[clamp(20rem,60%,200rem)];
+  }
+  .grid-container img {
+    @apply w-full h-auto rounded-xl;
   }
 }
 @layer utilities {
