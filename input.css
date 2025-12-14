@@ -65,23 +65,23 @@
     color: inherit !important;
   }
   h1 {
-    @apply text-4xl py-4 font-extrabold;
+    @apply text-4xl pt-6 pb-2 font-extrabold;
     border-bottom: 4px dashed;
   }
   h2 {
-    @apply text-3xl py-4 font-bold;
+    @apply text-3xl pt-6 pb-2 font-bold;
   }
   h3 {
-    @apply text-2xl py-4 font-semibold;
+    @apply text-2xl pt-6 pb-2 font-semibold;
   }
   h4 {
-    @apply text-xl py-4 font-semibold;
+    @apply text-xl pt-6 pb-2 font-semibold;
   }
   h5 {
-    @apply text-lg py-4 font-semibold;
+    @apply text-lg pt-6 pb-2 font-semibold;
   }
   h6 {
-    @apply text-lg py-4 italic;
+    @apply text-lg pt-6 pb-2 italic;
   }
   p {
     @apply text-base py-2;
@@ -97,7 +97,13 @@
     color: var(--color-text-bright);
   }
   i {
-    color: var(--color-text-bright);
+    color: var(--color-text-p);
+  }
+  ol {
+    @apply list-decimal list-outside mx-8 py-2;
+  }
+  ul {
+    @apply list-disc list-outside mx-8 py-2;
   }
 
   /* MathJax */
@@ -144,6 +150,9 @@
   /* navigation */
   #nav-links {
     @apply mx-4 w-1/3 min-w-fit space-y-4;
+  }
+  #nav-links div {
+    @apply space-y-4;
   }
   #nav-links a{
     @apply flex flex-2 border-l-3 px-4;
@@ -236,6 +245,9 @@
   .grid-container {
     @apply grid grid-cols-1 md:grid-cols-2 gap-6;
   }
+  .grid-container.center {
+    @apply mx-auto my-4 justify-center items-center h-full w-full md:w-[clamp(20rem,80%,200rem)];
+  }
   .grid-container.left {
     @apply float-left clear-left mr-6 my-4 h-full w-full md:w-[clamp(20rem,60%,200rem)];
   }
@@ -245,10 +257,45 @@
   .grid-container img {
     @apply w-full h-auto rounded-xl;
   }
+  ol.references {
+    @apply list-decimal list-outside mx-8 py-2;
+    padding-left: 2rem;
+    color: var(--color-text-p);
+  }
+  ol.references li {
+    @apply pl-2;
+  }
+  ol.references li:target {
+    animation: highlight-fade 3s ease-out forwards;
+  }
+  @keyframes highlight-fade {
+    0% {
+      background-color: var(--color-text-secondary);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  video {
+    @apply block mx-auto my-4 w-full md:w-[clamp(20rem,80%,80rem)]
+    rounded-xl;
+  }
 }
 @layer utilities {
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  .fig_caption {
+    @apply mt-[0.5rem] py-0 text-center;
+  }
+  .fig_caption mjx-container {
+    @apply my-0!;
+  }
+  .fig_caption mjx-container[jax="CHTML"] {
+    @apply my-0!;
+  }
+  .fig_caption mjx-container[jax="SVG"] {
+    @apply my-0!;
   }
   /* Add more utility classes here */
 }

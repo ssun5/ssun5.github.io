@@ -1,0 +1,47 @@
+{# video.njk — format a video element
+#}
+
+{# if using autoplay, mute and loop the video to avoid browser restrictions #}
+{% macro render_video(src, autoplay=true) -%}
+<video
+    src="{{ src }}"
+    type="video/mp4"
+    {% if autoplay %}autoplay{% endif %}
+    muted
+    loop
+    onmouseover="handleVideoMouseOver(event)"
+    onmouseout="handleVideoMouseOut(event)"
+    onplay="handleVideoPlay(event)"
+    onpause="handleVideoPause(event)"
+    onfocusin="handleVideoFocusIn(event)"
+    onfocusout="handleVideoFocusOut(event)">
+    Your browser does not support the video tag.
+</video>
+<script>
+function handleVideoMouseOver(e) {
+    e.currentTarget.dataset.over = true;
+    e.currentTarget.controls = true;
+}
+function handleVideoMouseOut(e) {
+    delete e.currentTarget.dataset.over;
+    if (e.currentTarget.paused) e.currentTarget.controls = false;
+}
+function handleVideoPlay(e) {
+    e.currentTarget.controls = true;
+}
+function handleVideoPause(e) {
+    if (!e.currentTarget.dataset.over && !e.currentTarget.dataset.focus) {
+        e.currentTarget.controls = false;
+    }
+}
+function handleVideoFocusIn(e) {
+    e.currentTarget.dataset.focus = true;
+    e.currentTarget.controls = true;
+}
+function handleVideoFocusOut(e) {
+    delete e.currentTarget.dataset.focus;
+    if (e.currentTarget.paused) e.currentTarget.controls = false;
+}
+</script>
+{%- endmacro %}
+

@@ -12,8 +12,8 @@
     <script>
       MathJax = {
         tex: {
-          packages: ['base', 'ams'],
-          inlineMath: [['\\(', '\\)']],
+          packages: {'[+]': ['ams']},
+          inlineMath: [['\\(', '\\)'], ['$', '$']],
           displayMath: [['$$', '$$'], ['\\[', '\\]']],
           processEscapes: true,
           processEnvironments: true,
@@ -25,6 +25,47 @@
       };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script>
+      // Force reference highlight animation to restart on each click
+      function restartHighlightAnimation(hash) {
+        if (!hash) return;
+        const target = document.querySelector(hash);
+        if (target && target.matches('ol.references li')) {
+          // Remove and re-add animation to force restart
+          target.style.animation = 'none';
+          // Force reflow
+          void target.offsetHeight;
+          // Re-apply animation
+          target.style.animation = 'highlight-fade 3s ease-out forwards';
+        }
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        // Listen for hash changes (when clicking reference links)
+        window.addEventListener('hashchange', () => {
+          restartHighlightAnimation(window.location.hash);
+        });
+        
+        // Listen for clicks on reference links to handle same-link clicks
+        document.addEventListener('click', (e) => {
+          const link = e.target.closest('a[href^="#ref"]');
+          if (link) {
+            const hash = link.getAttribute('href');
+            // Small delay to let the hash change first
+            setTimeout(() => {
+              restartHighlightAnimation(hash);
+            }, 10);
+          }
+        });
+        
+        // Also handle initial page load with hash
+        if (window.location.hash) {
+          setTimeout(() => {
+            restartHighlightAnimation(window.location.hash);
+          }, 100);
+        }
+      });
+    </script>
 </head>
 <body>
     {% include "nav.html" %}
