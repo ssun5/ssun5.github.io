@@ -4,7 +4,7 @@ date: '2020-06-01'
 ---
 <div id="tetris_video">
 {%- from 'video.njk' import render_video %}
-{{ render_video("/assets/img/tetris/tetris2.mp4") }}
+{{ render_video("/assets/img/tetris/tetris.mp4") }}
 </div>
 
 # Introduction
@@ -133,6 +133,6 @@ A more objective measure is by considering the number of pieces spawned w.r.t. t
 
 In the <a href="#tetris_video">demo'd case</a> the final ratio at the end of the game is 2.038 (801 spawned pieces, 393 rows cleared). The resulting ratio is close to the ideal value but perhaps still has room for improvement. With more refined training methods and significantly more time spent on training, it may be possible to bring this value closer to the ideal value. 
 
-Out of curiosity I also tried the agent on a full sized 20 x 10 board, even though the agent has only been trained to optimize for an 8 x 8 board. In the case of a 10-wide board, we again imagine the case of only dropping square puzzle blocks. In this case, it would take 5 pieces to clear 2 rows — making the ideal ratio 2.5. The time for a game to play until completion was significant — a good sign for a quality agent. **The agent successfully played through 100k pieces without the game terminating, clearing 3999 rows, resulting in a ratio of 2.5001.** Excellent results! I am quite satisfied :).
+Out of curiosity I also tried the agent on a full sized 20 x 10 board, even though the agent has only been trained to play on an 8 x 8 board. In the case of a 10-wide board, we again imagine the case of only dropping square puzzle blocks. In this case, it would take 5 pieces to clear 2 rows — making the ideal ratio 2.5. The time for a game to play until completion was significant — a good sign for a quality agent. **The agent successfully played through 100k pieces without the game terminating, clearing 3999 rows, resulting in a ratio of 2.5001.** Excellent results! I am quite satisfied :).
 
 

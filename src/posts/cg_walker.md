@@ -1,7 +1,7 @@
 ---
 title: Bipedal Compass-Gait Walker
 tags: ["control theory","matlab"]
-
+date: '2020-06-13'
 ---
 
 <img class="center" src="/assets/img/cg_walker/x1_orbit_fine.png" alt="cg_walker_orbit">

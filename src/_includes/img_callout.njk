@@ -1,0 +1,41 @@
+{# img_callout.njk - render a image container, containing an image with optional callouts
+   Usage:
+   {% from "_includes/img_callout.njk" import render_callout %}
+   {{ render_callout(contents) }}
+   where contents is an array of { image: '/assets/img/..', title: 'image title', callouts: [ { title: 'callout title', label: 'callout label', 'x': <number>%, 'y': <number>% }, ... ] }
+#}
+
+{% macro render_callout(contents) -%}
+<div class="img_container callout">
+  <div class="img_wrapper w-fit">
+    <img style="h-full" src="{{ contents.image }}" alt="{{ contents.title | escape }}">
+    {%- for callout in contents.callouts -%}
+      <div data-pin-count={{ loop.index }} class="pin" style="left: {{ callout.x }}%; top: {{ callout.y }}%;">
+        <span>{{ loop.index }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+  <div class="legend_wrapper">
+    <div class="legend">
+    {%- for callout in contents.callouts -%}
+      <div data-pin-count={{ loop.index }} class="pin">
+        <span>{{ loop.index }}</span>
+      </div>
+    {%- endfor -%}
+    </div>
+    <div class="legend_label">
+      {%- for callout in contents.callouts -%}
+        <div class="callout_label hidden" data-pin-count={{ loop.index }}>
+          {%- if callout.title -%}
+          <h3 class="my-0 py-0">{{ callout.title }}</h3>
+          {%- endif -%}
+          <p>
+            {{ callout.label }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+<script defer src="/assets/js/callout.js"></script>
+{%- endmacro %}
