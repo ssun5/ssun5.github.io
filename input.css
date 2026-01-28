@@ -91,6 +91,13 @@
     @apply text-base py-2;
     color: var(--color-text-p);
   }
+  code {
+    font-family: Consolas, Menlo, Monaco;
+    color: var(--color-text-bright);
+  }
+  pre {
+    @apply w-auto mx-auto md:w-[clamp(20rem,80%,90rem)] overflow-scroll;
+  }
   strong {
     color: var(--color-text-bright);
   }
