@@ -1,52 +1,75 @@
 // .eleventy.js
+const fs = require("fs");
+const path = require("path");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const dayjs = require("dayjs");
 
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("./src/assets");
+function normalizePathPrefix() {
+	const raw = process.env.BASE_PATH;
+	if (raw === undefined || raw === "" || raw === "/") {
+		return "/";
+	}
+	const withLeading = raw.startsWith("/") ? raw : `/${raw}`;
+	return withLeading.endsWith("/") ? withLeading : `${withLeading}/`;
+}
 
-  // Add Syntax Highlighting plugin
-  eleventyConfig.addPlugin(syntaxHighlight, {
+function escapeRegex(s) {
+	return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
-    // Line separator for line breaks
-    lineSeparator: "\n",
+module.exports = function (eleventyConfig) {
+	const pathPrefix = normalizePathPrefix();
+	const baseNoTrail = pathPrefix.replace(/\/$/, "") || "";
+	const pathSegment = baseNoTrail.replace(/^\//, "");
 
-    // Change which Eleventy template formats use syntax highlighters
-    templateFormats: ["*"], // default
+	eleventyConfig.addPassthroughCopy("./src/assets");
 
-    // Use only a subset of template types (11ty.js added in v4.0.0)
-    // templateFormats: ["liquid", "njk", "md", "11ty.js"],
+	eleventyConfig.addPlugin(syntaxHighlight, {
+		lineSeparator: "\n",
+		templateFormats: ["*"],
+		init: function ({ Prism }) {
+			Prism.languages.myCustomLanguage = {
+				/* … */
+			};
+		},
+		preAttributes: {
+			tabindex: 0,
+			"data-language": function ({ language }) {
+				return language;
+			},
+		},
+		codeAttributes: {},
+		errorOnInvalidLanguage: false,
+	});
 
-    // init callback lets you customize Prism
-    init: function({ Prism }) {
-      Prism.languages.myCustomLanguage = { /* … */ };
-    },
+	eleventyConfig.addFilter("date", function (date, format) {
+		return dayjs(date).format(format);
+	});
 
-    // Added in 3.1.1, add HTML attributes to the <pre> or <code> tags
-    preAttributes: {
-      tabindex: 0,
+	// Prefix root-relative href/src from markdown/HTML bodies; skips URLs already rewritten by | url
+	if (pathSegment) {
+		const re = new RegExp(
+			`(href|src)="/(?!${escapeRegex(pathSegment)}/)([^"]*)"`,
+			"g",
+		);
+		eleventyConfig.addTransform("prefix-root-urls", function (content) {
+			if (!this.outputPath?.endsWith(".html")) {
+				return content;
+			}
+			return content.replace(re, `$1="${baseNoTrail}/$2"`);
+		});
+	}
 
-      // Added in 4.1.0 you can use callback functions too
-      "data-language": function({ language, content, options }) {
-        return language;
-      }
-    },
-    codeAttributes: {},
-  });
+	eleventyConfig.on("eleventy.after", () => {
+		fs.writeFileSync(path.join("public", ".nojekyll"), "");
+	});
 
-  // Added in 5.0.0, throw errors on invalid language names
-  errorOnInvalidLanguage: false,
-
-  // Add dayjs date filter
-  eleventyConfig.addFilter("date", function(date, format) {
-    return dayjs(date).format(format);
-  });
-
-  return {
-	dir: {
-	  input: "src",
-	  output: "public"
-	},
-	markdownTemplateEngine: "njk"
-  };
+	return {
+		dir: {
+			input: "src",
+			output: "public",
+		},
+		markdownTemplateEngine: "njk",
+		pathPrefix,
+	};
 };

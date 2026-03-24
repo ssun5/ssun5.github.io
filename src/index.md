@@ -44,7 +44,7 @@ here is even more text to see how it wraps around the image. please behave.
 </div>
 
 <article style="overflow:hidden;">
-    <img class="left" src="assets/img/render_sketch.PNG" alt="render sketch">
+    <img class="left" src="/assets/img/render_sketch.PNG" alt="render sketch">
     <p>image with some text within an article wrapper. here's some more to fill some space. ABC DEFGHI JKLM NOP QRST UVWXYZ.</p>
 </article>
 

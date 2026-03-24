@@ -33,7 +33,14 @@ A_{V,tot} = A_{V1}A_{V2}
 $$
 </b>
 
-Since the two stages are both effectively common-source amplifiers, their gains are simply $A_V = g_m r_o$. Referencing the designators in the schematic, we can write the expressions as
+Since the two stages are both effectively common-source amplifiers, their gains are simply $A_V = g_m r_o$. 
+
+<div class="img_container center md:w-[clamp(20rem,80%,50rem)] aspect-[5/4] rounded-xl">
+<img class="object-cover scale-225 origin-[0%_2%]" src="/assets/img/opamp/opamp_note1.jpeg" alt="schematic">
+</div>
+</br>
+
+Referencing the designators in the schematic, we can write the expressions as
 
 $$
 \begin{align}
@@ -57,7 +64,7 @@ Using these conditions, we determine the location of $p_1$ by drawing a line at 
 
 <div>
 <div class="img_container center md:w-[clamp(20rem,50%,50rem)] aspect-[1/1] rounded-xl">
-<img class="object-cover scale-220 origin-[70%_0%]" src="/assets/img/opamp/opamp_note1.jpeg" alt="H(s) magnitude">
+<img class="object-cover scale-240 origin-[70%_0%]" src="/assets/img/opamp/opamp_note1.jpeg" alt="H(s) magnitude">
 </div>
 <p class="fig_caption text-pretty">Idealized Bode plots of system transfer function $H(s)$</p>
 </div>
@@ -88,7 +95,7 @@ $$
 C_{eff} = (1+A_{V2})C_C \approx A_{V2}C_C
 $$
 
-The approximation assumes a large stage 2 gain $A_{V2}$, as is typical (and practical) for such topology. As such we also assume the node between stage 1 and stage 2, *node W*, to be the responsible for dominant pole $p_1$. We then make the approximation that
+The approximation assumes a large stage 2 gain $A_{V2}$, as is typical (and practical) for such topology, and a small value for $R_z$ — typically only a few ohms. As such we also assume the node between stage 1 and stage 2, *node W*, to be the responsible for dominant pole $p_1$. We then make the approximation that
 
 $$
 \omega_{p1} \approx \frac{1}{R_W C_{eff}}, \quad \text{where } R_{W} = (r_{o1}||r_{o4}) = \frac{A_{V1}}{g_{m1}}
@@ -114,6 +121,13 @@ $$
 \left| \frac{V_{out}(s_z)}{V_W} \right| = 0
 $$
 
+
+<div>
+<img class="center md:w-[clamp(20rem,30%,50rem)]" src="/assets/img/opamp/zero_placement.jpeg" alt="zero placement">
+<p class="fig_caption text-pretty">Approximating location of zero</p>
+</div>
+</br>
+
 Assuming load resistance is large (necessary to achieve high gain for $A_{V2}$), nodal analysis yields
 
 $$
@@ -135,4 +149,4 @@ $$
 </b>
 
 # Remaining Steps
-The above calculations can typically bring the design to about 80%~90% completion. The remaining steps of the design are to simulate the circuit under various *process, voltage, and temperature* conditions (typically at their extremes) and to run Monte Carlo simulations to assess noise. These final steps are instrumental in finalizing the dimensions of the devices as well as assuring performance at all PVT extremes.   
+The above calculations can typically bring the design to about 80%~90% completion. The remaining steps of the design are to simulate the circuit under various *process, voltage, and temperature* conditions (typically at their extremes) and to run Monte Carlo simulations to assess noise. These final steps are instrumental in finalizing the dimensions of the devices as well as assuring performance of the circuit at all PVT extremes.   
