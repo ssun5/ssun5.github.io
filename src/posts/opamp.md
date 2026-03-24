@@ -35,7 +35,7 @@ $$
 
 Since the two stages are both effectively common-source amplifiers, their gains are simply $A_V = g_m r_o$. 
 
-<div class="img_container center md:w-[clamp(20rem,80%,50rem)] aspect-[5/4] rounded-xl">
+<div class="img_container center md:w-[clamp(20rem,50%,50rem)] aspect-[5/4] rounded-xl">
 <img class="object-cover scale-225 origin-[0%_2%]" src="/assets/img/opamp/opamp_note1.jpeg" alt="schematic">
 </div>
 </br>
