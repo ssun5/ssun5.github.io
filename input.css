@@ -6,7 +6,8 @@
 @theme {
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* --font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+  --font-display: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --color-text-primary: #eee;
   --color-text-bright: white;
@@ -203,8 +204,15 @@
       overflow-clip w-full md:w-min
       rounded-xl shadow-lg shadow-neutral-500 border-4 border-neutral-900;
     }
+    a.card.card--link {
+      text-decoration: none;
+      color: var(--color-text-p);
+    }
     .card:hover {
       @apply scale-105 shadow-xl ease-in-out transition-all duration-500 cursor-default;
+    }
+    a.card.card--link:hover {
+      @apply cursor-pointer;
     }
     .card > .top-container{
       @apply h-min md:h-[clamp(10rem,20rem,60vh)] w-full md:w-max basis-1 flex-auto;
@@ -396,6 +404,50 @@
       background-color: transparent;
     }
   }
+
+  main .img-lightbox,
+  main img.lightbox {
+    cursor: zoom-in;
+  }
+  main a img {
+    cursor: pointer;
+  }
+
+  body.image-modal-open {
+    overflow: hidden;
+  }
+
+  .image-modal {
+    @apply fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+  .image-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .image-modal[hidden] {
+    display: none !important;
+  }
+  .image-modal__img {
+    @apply max-h-[min(90vh,100%)] max-w-[min(96vw,100%)] w-auto h-auto object-contain rounded-xl;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  }
+  .image-modal__close {
+    @apply absolute top-3 right-3 md:top-5 md:right-5 z-[1001] flex h-10 w-10 items-center justify-center rounded-full border-2 text-2xl leading-none;
+    border-color: var(--color-text-bright);
+    color: var(--color-text-bright);
+    background-color: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+  }
+  .image-modal__close:hover {
+    color: var(--color-text-secondary);
+    border-color: var(--color-text-secondary);
+  }
+  
   video {
     @apply block mx-auto my-4 w-full md:w-[clamp(20rem,80%,50rem)]
     rounded-xl;

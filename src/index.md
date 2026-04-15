@@ -6,9 +6,17 @@ eleventyImport:
 ---
 Hello! My name is **Shan-Wei Sun** and here you can check out some my projects. Please enjoy. 
 
+This website is under active development.
+
 # Recent Works
 
 {% set items = [
+  { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'A MATLAB simulation of a passive compass-gait walker on an incline, using Lagrangian/Newton–Euler dynamics and a simple impact model. This project explores how gait evolves into periodic orbits, bifurcations, and chaos as the slope parameter varies.', url: '/posts/cg_walker'},
+  { image: '/assets/img/tetris/tetris_cover.jpg', title: 'Autonomous Tetris Agent', caption: 'In this project, I use reinforcement learning techniques to train a computer agent to play the game of Tetris.', url: '/posts/tetris'},
+  { image: '/assets/img/opamp/opamp_note1.jpeg', title: 'OpAmp Design & Calculations', caption: 'This post covers the design and calculations for a simple 2-stage operational amplifier.', url: '/posts/opamp'},
+  { image: '/assets/img/soft_tracker/device_and_markers.jpg', title: 'Surface Referencing Soft Bodies', caption: 'A low-cost, optical based solution for positional tracking of medical device contact along human skin.', url: '/posts/soft_tracker'},
+
+  
   { image: '/assets/img/test_image.png', title: 'Flexible Robotic Tentacle', caption: 'Caption for test image 1. Should show an image of a robotic tentacle.' },
   { image: '/assets/img/Bent_R_V_Q.jpg', title: 'Modeling of a Thin-Film Resistor', caption: 'Thin-film resistor model showing equipotential lines, current flow, and calculated resistance.' },
   { image: '/assets/img/zs_boards.jpeg', title: 'Look for the Mark', caption: 'Many PCBs I have designed bare my signature. Look around, you might find one!' }

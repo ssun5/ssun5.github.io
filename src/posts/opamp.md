@@ -9,19 +9,20 @@ date: '2024-02-01'
 # Introduction 
 This post covers the design and calculations for a simple 2-stage operational amplifier. 
 
-The design uses a simple OTA as the first stage and a common-source amplifier for the output stage. Cascode transistors are used to improve accuracy and overall gain of the amplifier. Compensation is implemented to increase the system phase margin and improve stability at high frequency. 
+The design uses a simple OTA as the first stage and a common-source amplifier for the output stage. Cascode transistors are used to improve accuracy and overall gain of the amplifier. Compensation is implemented to increase the system phase margin and to improve stability at high frequency. 
 
-*Limitations: these are my personal notes for the bulk of initial designs and is not meant as an outline of a complete design process.*
+*Limitations: these are my personal notes which cover the bulk of initial designs; they are not meant as outline for a complete design process.*
 
 # Design Specification
 <ul>
 <li>P-MOS input, N-MOS output</li>
 <li>DC gain > 90dB</li>
 <li>UGW = 5MHz</li>
-<li>PM: ~60º</li>
+<li>PM: ~60$^\circ$</li>
 </ul>
 
 # Calculations
+This section discusses the calculations used in the example circuit (illustrated in the above schematic/sketch).
 
 ## DC Gain $A_{V,tot}$
 <img class="center md:w-[clamp(10rem,80%,30rem)]" src="/assets/img/opamp/opamp_stages.svg" alt="opamp stages">
@@ -33,7 +34,7 @@ A_{V,tot} = A_{V1}A_{V2}
 $$
 </b>
 
-Since the two stages are both effectively common-source amplifiers, their gains are simply $A_V = g_m r_o$. 
+Since the two stages are both effectively common-source amplifiers, their gain take on the form $A_V = g_m r_o$. 
 
 <div class="img_container center md:w-[clamp(20rem,50%,50rem)] aspect-[5/4] rounded-xl">
 <img class="object-cover scale-225 origin-[0%_2%]" src="/assets/img/opamp/opamp_note1.jpeg" alt="schematic">
@@ -55,10 +56,10 @@ $$
 g_m = \frac{2I_D}{V_{gs}-V_{th}}
 $$
 
-In practice, we should determine the values by first characterizing and plotting *$g_m/I_D$* curves of the transistors. To pick the values for $A_{V1}$ and $A_{V2}$, we need to take into account of the total system response. 
+In practice, we should determine the values by first characterizing and plotting *$g_m/I_D$* curves of the transistors. To pick the values for $A_{V1}$ and $A_{V2}$, we need to take into account the total system's frequency response. 
 
 ## Placing $p_1$ and $p_2$
-Recall that the design requirements specify a unity gain frequency (UGW) of 5MHz. We can assume that the system has *two dominant poles $p_1$ and $p_2$ at $\omega_{p1}$ and $\omega_{p2}$*, respectively. We further assert that $p_2$ is at a frequency higher than UGW and that it does not participate significantly in the initial roll-off — the justification for this assertion is that we require it to be the case, since having two poles before cross-over leads to instability of the overall system.
+Recall that the design requirements specify a unity gain frequency (UGW) of 5MHz. We can assume that the system has *two dominant poles $p_1$ and $p_2$* (at $\omega_{p1}$ and $\omega_{p2}$, respectively). We further assert that $p_2$ is at a frequency higher than UGW and that it does not participate significantly in the initial roll-off — the justification for this assertion is that we require it to be the case, since having two poles before cross-over leads to instability of the overall system.
 
 Using these conditions, we determine the location of $p_1$ by drawing a line at a slope of $-20\text{ dB}/\text{decade}$ from $(5\text{ MHz},0\text{ dB})$ to where it intersects a horizontal line at 90dB (the DC gain of the system). 
 
@@ -81,10 +82,12 @@ p_1 &: (5\text{ MHz})(10^{-\operatorname{log|A_{V,tot}|}}),\quad A_{V,tot}:\text
 \end{align*}
 $$
 
-As for the location of $p_2$, it is convenient to approximate its location with an idealized Bode phase plot — where a -90º phase change begins 1 decade before a pole and finishes 1 decade after. Suppose $p_2$ is placed half a decade after cross-over, it will contribute -22.5º of phase shift to the system response by cross-over. In other words, the total phase shift at cross-over will be -112.5º, giving the system a phase margin of 67.5º — close to the target phase margin of 60º. 
+Thus, we choose to place $p_1$ at $\omega_{p1}  =  158\text{Hz}$
+
+As for the location of $p_2$, it is convenient to approximate its location with an idealized Bode phase plot, in which a pole contributes -90$^\circ$ total phase change, beginning 1 decade before the pole frequency and finishing 1 decade after. Suppose $p_2$ is placed *half a decade after cross-over*, it will contribute -22.5$^\circ$ of phase shift to the system response at the cross-over frequency. In other words, the total phase shift at cross-over will be -112.5$^\circ$ (-90$^\circ$ from $p_1$ + -22.5$^\circ$ from $p_2$), giving the system a phase margin of 67.5$^\circ$ (-180$^\circ$ - -112.5$^\circ$ = 67.5$^\circ$) — close to the target phase margin of 60$^\circ$. 
 
 $$
-\text{Choose }p_2: (5\text{ MHz})(10^{-4.5}) = \boxed{1.58\times 10^{7} \text{ Hz}}
+\text{Choose }p_2: (5\text{ MHz})(10^{1/2}) = \boxed{1.58\times 10^{7} \text{ Hz}}
 $$
 In practice, this placement is difficult to achieve without compensation, so we typically employ Miller compensation technique to simulatneously shift (split) the pole locations and introduce additional phase margin by injecting a zero in between.
 
@@ -95,13 +98,13 @@ $$
 C_{eff} = (1+A_{V2})C_C \approx A_{V2}C_C
 $$
 
-The approximation assumes a large stage 2 gain $A_{V2}$, as is typical (and practical) for such topology, and a small value for $R_z$ — typically only a few ohms. As such we also assume the node between stage 1 and stage 2, *node W*, to be the responsible for dominant pole $p_1$. We then make the approximation that
+The approximation assumes a large stage 2 gain $A_{V2}$, as is typical (and practical) for such topology, and a small value for $R_z$ — typically only a few ohms. As such we also assume the node between stage 1 and stage 2, *node W*, to be responsible for dominant pole $p_1$. This assumption allows us to then make the approximation
 
 $$
 \omega_{p1} \approx \frac{1}{R_W C_{eff}}, \quad \text{where } R_{W} = (r_{o1}||r_{o4}) = \frac{A_{V1}}{g_{m1}}
 $$
 
-$R_W$ is simply a rewriting of the $A_{V1}$ equation \eqref{Av1}. Putting the expressions together yields
+Conveniently, $R_W$ is simply a rewriting of the $A_{V1}$ equation \eqref{Av1}. Putting the expressions together yields
 
 $$
 R_W C_{eff} \approx \frac{A_{V1}}{g_{m1}} \cdot A_{V2}C_C = \frac{A_{V,tot}C_C}{g_{m1}}

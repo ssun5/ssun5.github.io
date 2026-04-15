@@ -11,6 +11,8 @@ date: '2024-06-27'
 </div>
 
 # Introduction
+In this project, I design a *Spread Spectrum Clock* modulator in order to reduce the EMI emissions of an IC around the AM radio band. The entire design is done in Cadence Virutoso. Results are shown in the end.
+
 *Spread Spectrum Clocking (SSC)* is a technique that helps reduce the radiated emissions of digital systems by modulating and shifting the frequency of clock signals. Due to the periodicity of the digital clock signals, electromagnetic interference (EMI) tends to concentrate about system clock frequencies as well as their odd harmonics. By slightly varying a system's clock freuquency, the overall emission is spread over a broader frequency range, reducing peak EMI and helping systems meet regulatory standards.
 
 # Design Specifications
@@ -39,8 +41,8 @@ The delay cell is the principle building block about which the rest of the syste
 My rendition of spread spectrum clock is shown in here. Looking at the schematic, we can see that the master clock first enters from the left side, and is modulated by blocks **Fine trim DL** and **Coarse trim DL**. **Fine trim DL** and **Coarse trim DL** are functionally similar in that both impose ’jitters’ in frequency relative to the central (input) frequency — one smaller and the other larger in magnitude, respectively. Thus, for the purpose of discussion, we can simply choose one of the two blocks to examine. 
 
 <div>
-<div class="img_container center w-full aspect-[3/1] rounded-xl">
-<img class="object-cover invert object-[50%_60%]" src="/assets/img/spread_spectrum/DLSS_system_view.jpg" alt="DLSS system">
+<div class="img_container img-lightbox center w-full aspect-[3/1] rounded-xl">
+<img class="object-cover object-[50%_60%]" src="/assets/img/spread_spectrum/DLSS_system_view.jpg" alt="DLSS system">
 </div>
 <p class="fig_caption text-pretty">DLSS system view</p>
 </div>
@@ -48,8 +50,8 @@ My rendition of spread spectrum clock is shown in here. Looking at the schematic
 Figure 4 shows the internal structure of Coarse trim DL. The block is composed of multiple
 delay blocks. The delay blocks come in pairs (e.g. MUX delay cell 10n is repeated), as the first cell is responsible for delay of the first half period and the second cell effectively helps double the delay in the latter half period. Together, they ensure that the modulated clock maintains a duty cycle of 50%. See Figure 2 for visualization.
 
-<div class="img_container center w-full rounded-xl">
-<img class="object-cover invert object-center" src="/assets/img/spread_spectrum/coarse_trim.jpg" alt="coarse trim block">
+<div class="img_container img-lightbox center w-full rounded-xl">
+<img class="object-cover object-center" src="/assets/img/spread_spectrum/coarse_trim.jpg" alt="coarse trim block">
 </div>
 
 
@@ -72,15 +74,15 @@ cycle of 50%. See Figure 2 for visualization.
 </div>
 
 <div>
-<div class="img_container center w-full rounded-xl">
-<img class="object-cover invert object-center" src="/assets/img/spread_spectrum/delay_cell_26n.jpg" alt="26ns delay cell">
+<div class="img_container img-lightbox center w-full rounded-xl">
+<img class="object-cover object-center" src="/assets/img/spread_spectrum/delay_cell_26n.jpg" alt="26ns delay cell">
 </div>
 <p class="fig_caption text-pretty">Delay block</p>
 </div>
 
 <div>
-<div class="img_container center rounded-xl">
-<img class="object-cover invert max-h-[60vh] w-auto" src="/assets/img/spread_spectrum/delay_cell_26n_zoom.jpg" alt="linear delay">
+<div class="img_container img-lightbox center rounded-xl">
+<img class="object-cover max-h-[60vh] w-auto" src="/assets/img/spread_spectrum/delay_cell_26n_zoom.jpg" alt="linear delay">
 </div>
 <p class="fig_caption text-pretty">Linear delay element</p>
 </div>
@@ -90,8 +92,8 @@ cycle of 50%. See Figure 2 for visualization.
 
 
 <div>
-<div class="img_container center w-full aspect-[3/1] rounded-xl">
-<img class="object-cover invert scale-100 origin-[100%_40%]" src="/assets/img/spread_spectrum/DLSS_system_view.jpg" alt="DLSS system">
+<div class="img_container img-lightbox center w-full aspect-[3/1] rounded-xl">
+<img class="object-cover scale-100 origin-[100%_40%]" src="/assets/img/spread_spectrum/DLSS_system_view.jpg" alt="DLSS system">
 </div>
 <p class="fig_caption text-pretty">DLSS system view</p>
 </div>

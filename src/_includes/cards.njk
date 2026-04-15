@@ -2,15 +2,22 @@
    Usage:
    {% from "_includes/cards.njk" import render_cards %}
    {{ render_cards(items) }}
-   where items is an array of { image: '/assets/img/..', title: 'Title', caption: '...', tags: ['#one'] }
+   where items is an array of { image: '/assets/img/..', title: 'Title', caption: '...', tags: ['#one'], url: '/posts/slug/' }
+   Optional: url or href — if set, the whole card is wrapped in a link (passes through | url for pathPrefix).
+   Optional: external: true — adds target="_blank" and rel="noopener noreferrer"
 #}
 
 {% macro render_cards(items) -%}
 <div class="card-container mathjax_ignore">
   {%- for it in items %}
+  {%- set href = it.url or it.href -%}
+  {%- if href -%}
+  <a class="card card--link" href="{{ href | url }}"{% if it.external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+  {%- else -%}
   <div class="card">
+  {%- endif -%}
     <div class="top-container">
-        <img class="card-image" src="{{ it.image }}" alt="{{ it.title | escape }}">
+        <img class="card-image" src="{{ it.image | url }}" alt="{{ it.title | escape }}">
     </div>
     <div class="break"></div>
     <div class="bottom-container">
@@ -24,7 +31,11 @@
       <div class="tags">{%- for tag in it.tags -%}<span class="tag">{{ tag | escape }}</span>{%- endfor %}</div>
     {%- endif -%}
     </div>
+  {%- if href -%}
+  </a>
+  {%- else -%}
   </div>
+  {%- endif -%}
   {%- endfor %}
 </div>
 {%- endmacro %}
