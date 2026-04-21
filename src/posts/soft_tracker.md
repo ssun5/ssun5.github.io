@@ -2,7 +2,7 @@
 title: Surface Referencing Against Deformable Soft Bodies
 date: '2021-05-01'
 ---
-
+<h1 class="mt-0 pt-0 about_title">{{ title }}</h1>
 {{ title }}: A low-cost, optical based solution for positional tracking of medical device contact along human skin.
 
 <div class="grid-container center">

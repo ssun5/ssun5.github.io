@@ -3,7 +3,7 @@ title: Operational Amplifier Design & Calculations
 tags: ["analog","ic"]
 date: '2024-02-01'
 ---
-
+<h1 class="mt-0 pt-0 about_title">{{ title }}</h1>
 <img class="center" src="/assets/img/opamp/opamp_note1.jpeg" alt="opamp notes">
 
 # Introduction 

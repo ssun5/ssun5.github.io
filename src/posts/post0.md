@@ -1,7 +1,7 @@
 ---
 title: Post 0
 ---
-
+<h1 class="mt-0 pt-0 about_title">{{ title }}</h1>
 # Meow 
 
 some math reference things, \\(y=m x+ b\\), math stuffs

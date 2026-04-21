@@ -75,13 +75,14 @@
     </script>
 </head>
 <body>
-    {% include "nav.html" %}
+    {%- if nav == False -%}
+    {%- include "nav.html" -%}
+    {%- endif -%}
     <main>
         <header>
             {%- if date -%}
             <p class="text-xs my-0">{{ date | date("MMM DD, YYYY") }}</p>
             {%- endif -%}
-            <h1 class="mt-0 pt-0">{{ title }}</h1>
         </header>
         {{ content | safe }}
         {% include 'footer.html' %}  

@@ -1,31 +1,12 @@
-<nav class="h-screen">
-    <button id="menu-toggle-btn" class="px-4 p-4 -mt-4 mb-4 text-3xl md:hidden">&#9776;</button>
-    <div id="nav-links" class="flex-col hidden md:flex">
-        <div>
-            <a href="{{ '/' | url }}">Home</a>
-        </div>
-        <div>
-            <a href="{{ '/about/' | url }}">About</a>
-        </div>
-        <div>
-            <a href="{{ '/contact/' | url }}">Contact</a>
-        </div>
-        <div class="mt-6">
-            Posts
-            <div class="ml-4 mt-4">
-                {% for post in collections.post %}
-                <div>
-                    <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+<nav>
+    <div class="flex-row flex self-start">
+        <a href="/index">shan-wei sun</a>
+    </div>
+    <div class="flex-row flex self-end">
+        <div class="mr-4">one</div>
+        <div>two</div>
     </div>
 </nav>
 <script defer>
-    // Toggle navigation visibility on button click
-    document.getElementById("menu-toggle-btn").addEventListener("click", function () {
-        const nav = document.getElementById("nav-links");
-        nav.classList.toggle("hidden");
-    });
+    // add event listener
 </script>

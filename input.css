@@ -6,37 +6,47 @@
 @theme {
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* --font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
   --font-display: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* --mono-blue: #008fff;
+  --mono-pink: #ffb3ff;
+  --mono-red: #ff537a;
+  --mono-yellow: #ffffb5;
+  --mono-green: #00ffb5;
+  --mono-tile: #121217; */
 
   --color-text-primary: #eee;
   --color-text-bright: white;
   --color-text-muted: var(--color-neutral-600);
+  --color-text-secondary: #0045ff;
+  --color-text-highlight: #008fff;
+  --color-text-accent: #cc4125;
+/*   
   --color-text-secondary: #4545ff;
   --color-text-highlight: #9090ff;
-  --color-text-accent: #ed7631;
+  --color-text-accent: #ed7631; */
   --color-text-p: var(--color-gray-400);
   --color-bg: var(--color-neutral-950);
-
+  /* --color-bg: black; */
   --eq-label-color: var(--color-text-bright);
   --eq-label-hover: var(--color-text-secondary);
   --eq-label-active: var(--color-text-highlight);
 
   --shadow-lg: 0 5px 18px 0px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgb(0, 0, 0, 0.1); 
 
-
   /* --font-display: "Satoshi", "sans-serif"; */
   /* Define other custom theme properties here */
+  --bento-gallery-aspect-ratio: 5/4;
 }
 @layer base {
   html {
     @apply scroll-smooth scroll-p-[45%];
   }
   header {
-    @apply my-6;
+    @apply mt-6;
   }
   body {
-    @apply flex h-screen my-24 mx-8; 
+    @apply flex flex-col min-h-screen h-auto w-full;
     background-color: var(--color-bg);
     font-family: var(--font-display);
     color: var(--color-text-primary);
@@ -47,7 +57,7 @@
   }
   /* main */
   main {
-    @apply flex-grow pt-0 pb-8 px-8 max-w-[100rem];
+    @apply flex-grow py-8 px-[5%] min-w-[20rem] max-w-[100rem];
     color: var(--color-text-p);
     /* overflow-y-auto */
   }
@@ -70,23 +80,17 @@
     color: inherit !important;
   }
   h1 {
-    @apply text-4xl pt-6 pb-2 mb-3 font-extrabold;
-    border-bottom: 4px dashed;
+    @apply text-5xl mt-16 mb-6;
   }
   h2 {
-    @apply text-3xl pt-6 pb-2 font-bold;
+    @apply text-2xl mt-6 mb-2;
   }
   h3 {
-    @apply text-2xl pt-6 pb-2 font-semibold;
+    @apply text-base mt-6 mb-2;
+    color: var(--color-text-highlight);
   }
   h4 {
-    @apply text-xl pt-6 pb-2 font-semibold;
-  }
-  h5 {
-    @apply text-lg pt-6 pb-2 font-semibold;
-  }
-  h6 {
-    @apply text-lg pt-6 pb-2 italic;
+    @apply text-base mt-6 mb-2 font-semibold;
   }
   p {
     @apply text-base py-2;
@@ -163,6 +167,10 @@
 
 @layer components {
   /* navigation */
+  nav {
+    /* nav bar, full width, single line; name left, links right */
+    @apply w-full shrink-0 flex-row flex justify-between px-[5%] my-4;
+  }
   #nav-links {
     @apply mx-4 w-1/3 min-w-fit max-w-[20rem] space-y-4;
   }
@@ -181,6 +189,12 @@
     color: var(--color-text-highlight);
     border-color: var(--color-text-highlight);
   }
+
+  div.wrapper {
+    @apply w-[clamp(20rem,80%,100rem)] mx-auto;
+  }
+  
+  /* captioned */
   .captioned {
     @apply relative;
   }
@@ -370,6 +384,25 @@
     @apply block mx-auto my-4 w-full md:w-[clamp(20rem,80%,50rem)]
     rounded-xl;
   }
+
+  div.bento-gallery {
+    /* minmax(0, auto): row tracks can shrink below max-content; avoids tall items inflating tracks so neighbors spill into gap */
+    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 my-12 border-0 auto-rows-[minmax(0,auto)] grid-flow-row-dense;
+    .item {
+      /* no h-full: % height vs grid area is ambiguous; default stretch fills the cell. min-h/w-0: grid min-size is usually content (img intrinsic). */
+      @apply row-span-1 col-span-1 min-h-0 min-w-0 aspect-[var(--bento-gallery-aspect-ratio)] overflow-hidden rounded-xl;
+    }
+    /* row-span + aspect-ratio on the same box fight: aspect locks height from width, grid assigns a different cell height → letterboxing or gap bleed */
+    .item:where([class*="row-span"]) {
+      aspect-ratio: auto;
+    }
+    img,
+    video {
+      /* min-w-0: replaced elements default min-width: auto ≈ intrinsic width; without it wide bitmaps stay wide and paint into column gaps */
+      @apply block h-full min-h-0 min-w-0 max-w-full object-cover;
+    }
+  }
+
   .grid-container {
     @apply grid grid-cols-1 md:grid-cols-2 gap-6;
   }

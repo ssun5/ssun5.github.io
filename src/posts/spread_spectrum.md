@@ -2,7 +2,7 @@
 title: Design of Spread Spectrum Clock
 date: '2024-06-27'
 ---
-
+<h1 class="mt-0 pt-0 about_title">{{ title }}</h1>
 <div>
 <div class="img_container center aspect-[4/3] rounded-xl">
 <img class="object-cover scale-115 origin-[90%_15%]" src="/assets/img/spread_spectrum/384khz_fft_compare_full.jpg" alt="fft noise comparison">
