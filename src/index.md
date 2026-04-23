@@ -19,7 +19,7 @@ This website is under active development.
 </div>
 
 <div class="w-full">
-  <div class="bento-gallery shadow-none">
+  <div class="bento">
     <div class="item row-span-2">
       <img class="h-full" src="/assets/img/zs_boards.jpeg" alt="makers_mark">
     </div>
@@ -29,38 +29,28 @@ This website is under active development.
     <div class="item row-span-2 col-span-2">
       <img class="h-full" src="/assets/img/cg_walker/x1_orbit_fine.png" alt="Bipedal Compass-Gait Walker">
     </div>
-    <div class="item col-span-3 bg-neutral-900 aspect-[calc(3*var(--bento-gallery-aspect-ratio))]">
-      <img class="w-full" src="/assets/img/tetris/tetris_pieces.svg" alt="tetris pieces">
+    <div class="grid grid-rows-subgrid grid-cols-subgrid min-h-0 col-span-2 row-span-2 md:row-span-1 md:col-span-4 lg:col-span-2 lg:row-span-2">
+      <div class="item">
+        <img class="h-full" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
+      </div>
+      <div class="item">
+        <img class="h-full" src="/assets/img/soft_tracker/device_top.jpg" alt="device_view2">
+      </div>
+      <div class="item">
+        <img class="h-full object-[25%_25%]" src="/assets/img/soft_tracker/device_and_markers.jpg" alt="device_view3">
+      </div>
+      <div class="item">
+        <img class="h-full" src="/assets/img/soft_tracker/measuring_foam_form.jpg" alt="device_view4">
+      </div>
     </div>
     <div class="item">
-      <video class="h-full scale-125" autoplay loop muted>
+      <video class="h-full scale-150" autoplay loop muted>
         <source src="/assets/img/cg_walker/CG_walk_animation.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
-    <div class="item bg-neutral-900">
-      <img class="h-full scale-60" src="/assets/img/spread_spectrum/delay_block.svg" alt="SSCLK">
-    </div>
-    <div class="item">
-      <video class="h-full object-cover m-0 object-[53%_40%]" autoplay loop muted>
-        <source src="/assets/img/tetris/tetris.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
     <div class="item row-span-2">
-      <img class="h-full" src="/assets/img/venturi/resin_printing.jpeg" alt="venturi resin printing">
-    </div>
-    <div class="item">
-      <img class="h-full" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
-    </div>
-    <div class="item">
-      <img class="h-full" src="/assets/img/soft_tracker/device_top.jpg" alt="device_view2">
-    </div>
-    <div class="item">
-      <img class="h-full object-[25%_25%]" src="/assets/img/soft_tracker/device_and_markers.jpg" alt="device_view3">
-    </div>
-    <div class="item">
-      <img class="h-full" src="/assets/img/soft_tracker/measuring_foam_form.jpg" alt="device_view4">
+      <img class="h-full scale-115 origin-[0%_90%]" src="/assets/img/cnc/cnc3.jpeg" alt="cnc">
     </div>
     <div class="item row-span-2 col-span-2">
       <img class="h-full" src="/assets/img/opamp/opamp_note1.jpeg" alt="opamp notes">
@@ -68,9 +58,21 @@ This website is under active development.
     <div class="item">
       <img class="h-full scale-120 origin-[10%_40%]" src="/assets/img/mujoco/ur10e.png" alt="ur10e">
     </div>
-    <div class="item row-span-2">
-      <img class="h-full scale-130 origin-[70%_10%]" src="/assets/img/cnc/cnc1.jpeg" alt="cnc">
+    <div class="item col-span-2 bg-neutral-900 flex items-center justify-center">
+      <img class="object-contain" src="/assets/img/tetris/tetris_pieces.svg" alt="tetris pieces">
     </div>
+    <div class="item bg-neutral-900 flex items-center justify-center">
+      <img class="object-contain scale-80" src="/assets/img/spread_spectrum/delay_block.svg" alt="SSCLK">
+    </div>
+    <div class="item">
+      <video class="h-full w-full" autoplay loop muted>
+        <source src="/assets/img/tetris/tetris.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <!-- <div class="item row-span-2">
+      <img class="h-full" src="/assets/img/venturi/resin_printing.jpeg" alt="venturi resin printing">
+    </div> -->
   </div>
 </div>
 

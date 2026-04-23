@@ -385,21 +385,15 @@
     rounded-xl;
   }
 
-  div.bento-gallery {
-    /* minmax(0, auto): row tracks can shrink below max-content; avoids tall items inflating tracks so neighbors spill into gap */
-    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 my-12 border-0 auto-rows-[minmax(0,auto)] grid-flow-row-dense;
+  div.bento {
+    @apply grid auto-cols-fr grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1.5 my-12
+    auto-rows-fr grid-flow-row-dense w-full;
     .item {
-      /* no h-full: % height vs grid area is ambiguous; default stretch fills the cell. min-h/w-0: grid min-size is usually content (img intrinsic). */
-      @apply row-span-1 col-span-1 min-h-0 min-w-0 aspect-[var(--bento-gallery-aspect-ratio)] overflow-hidden rounded-xl;
-    }
-    /* row-span + aspect-ratio on the same box fight: aspect locks height from width, grid assigns a different cell height → letterboxing or gap bleed */
-    .item:where([class*="row-span"]) {
-      aspect-ratio: auto;
+      @apply row-span-1 col-span-1 w-full h-full overflow-hidden rounded-xl;
     }
     img,
     video {
-      /* min-w-0: replaced elements default min-width: auto ≈ intrinsic width; without it wide bitmaps stay wide and paint into column gaps */
-      @apply block h-full min-h-0 min-w-0 max-w-full object-cover;
+      @apply m-0 object-cover;
     }
   }
 
