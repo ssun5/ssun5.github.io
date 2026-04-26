@@ -13,3 +13,7 @@
 
 # Log files
 *.log
+
+# Local scratch / test output
+tmp/
+tmp-out/
