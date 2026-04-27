@@ -363,7 +363,7 @@
 
   /* image callout container */
   .img_container.callout{
-    @apply grid box-border mx-auto my-6 grid-cols-1 lg:grid-cols-2 justify-center-safe justify-items-center-safe h-fit w-full lg:w-[clamp(30rem,90%,120rem)] gap-4;
+    @apply grid box-border mx-auto py-6 my-0 grid-cols-1 lg:grid-cols-2 justify-center-safe justify-items-center-safe h-fit w-full lg:w-[clamp(30rem,90%,120rem)] gap-4;
     grid-template-areas:
       "img_wrapper",
       "legend_wrapper";
@@ -398,7 +398,7 @@
     @apply order-first md:order-last mx-10 self-start md:self-auto;
   }
   .img_container.callout .legend_wrapper {
-    @apply order-last flex flex-col justify-center mx-0 md:flex-row md:justify-self-start items-center-safe;
+    @apply order-last flex flex-col justify-center py-6 mx-0 md:flex-row md:justify-self-start items-center-safe;
   }
 
   img.left {
@@ -419,6 +419,41 @@
     auto-rows-fr grid-flow-row-dense w-full;
     .item {
       @apply row-span-1 col-span-1 w-full h-full overflow-hidden rounded-xl;
+    }
+    a.item {
+      @apply no-underline text-[var(--color-text-bright)];
+    }
+    a.item:hover,
+    a.item:focus-visible,
+    a.item:focus-visible:hover {
+      @apply text-[var(--color-text-bright)];
+    }
+    a.item-link {
+      @apply relative isolate no-underline text-[var(--color-text-bright)];
+    }
+    a.item-link:hover,
+    a.item-link:focus-visible,
+    a.item-link:focus-visible:hover {
+      @apply text-[var(--color-text-bright)];
+    }
+    a.item-link .item-link__title {
+      @apply pointer-events-none absolute inset-0 z-10 flex items-center justify-center
+        px-3 text-center font-normal text-balance
+        text-lg
+        !text-[var(--color-text-bright)]
+        text-shadow-lg
+        opacity-0 transition-opacity transition-discrete delay-0;
+    }
+    a.item-link .item-link__media {
+      @apply opacity-100 transition delay-0;
+    }
+    a.item-link:hover .item-link__media,
+    a.item-link:focus-visible .item-link__media {
+      @apply opacity-20 blur-lg;
+    }
+    a.item-link:hover .item-link__title,
+    a.item-link:focus-visible .item-link__title {
+      @apply opacity-100;
     }
     img,
     video {

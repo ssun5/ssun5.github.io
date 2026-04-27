@@ -26,23 +26,25 @@ This website is under active development.
     <div class="item">
       <img class="h-full" src="/assets/img/Bent_R_V_Q.jpg" alt="modeling thin film resistor">
     </div>
-    <div class="item row-span-2 col-span-2">
-      <img class="h-full" src="/assets/img/cg_walker/x1_orbit_fine.png" alt="Bipedal Compass-Gait Walker">
-    </div>
-    <div class="grid grid-rows-subgrid grid-cols-subgrid min-h-0 col-span-2 row-span-2 md:row-span-1 md:col-span-4 lg:col-span-2 lg:row-span-2">
+    <a class="item item-link row-span-2 col-span-2" href="/posts/cg_walker">
+      <span class="item-link__title">Bipedal Compass-Gait Walker</span>
+      <img class="item-link__media h-full" src="/assets/img/cg_walker/x1_orbit_fine.png" alt="Bipedal Compass-Gait Walker">
+    </a>
+    <a class="item-link grid grid-rows-subgrid grid-cols-subgrid min-h-0 col-span-2 row-span-2 md:row-span-1 md:col-span-4 lg:col-span-2 lg:row-span-2" href="/posts/soft_tracker">
+      <span class="item-link__title">Surface Referencing Soft Bodies</span>
       <div class="item">
-        <img class="h-full" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
+        <img class="item-link__media h-full" src="/assets/img/soft_tracker/device_back.jpg" alt="device_view1">
       </div>
       <div class="item">
-        <img class="h-full" src="/assets/img/soft_tracker/device_top.jpg" alt="device_view2">
+        <img class="item-link__media h-full" src="/assets/img/soft_tracker/device_top.jpg" alt="device_view2">
       </div>
       <div class="item">
-        <img class="h-full object-[25%_25%]" src="/assets/img/soft_tracker/device_and_markers.jpg" alt="device_view3">
+        <img class="item-link__media h-full object-[25%_25%]" src="/assets/img/soft_tracker/device_and_markers.jpg" alt="device_view3">
       </div>
       <div class="item">
-        <img class="h-full" src="/assets/img/soft_tracker/measuring_foam_form.jpg" alt="device_view4">
+        <img class="item-link__media h-full" src="/assets/img/soft_tracker/measuring_foam_form.jpg" alt="device_view4">
       </div>
-    </div>
+    </a>
     <div class="item">
       <video class="h-full scale-150" autoplay loop muted>
         <source src="/assets/img/cg_walker/CG_walk_animation.mp4" type="video/mp4">
@@ -52,31 +54,34 @@ This website is under active development.
     <div class="item row-span-2">
       <img class="h-full scale-115 origin-[0%_90%]" src="/assets/img/cnc/cnc3.jpeg" alt="cnc">
     </div>
-    <div class="item row-span-2 col-span-2">
-      <img class="h-full" src="/assets/img/opamp/opamp_note1.jpeg" alt="opamp notes">
-    </div>
+    <a class="item item-link row-span-2 col-span-2" href="/posts/opamp">
+      <span class="item-link__title">Operational Amplifier Design</span>
+      <img class="item-link__media h-full" src="/assets/img/opamp/opamp_note1.jpeg" alt="opamp notes">
+    </a>
     <div class="item">
       <img class="h-full scale-120 origin-[10%_40%]" src="/assets/img/mujoco/ur10e.png" alt="ur10e">
     </div>
     <div class="item col-span-2 bg-neutral-900 flex items-center justify-center">
       <img class="object-contain" src="/assets/img/tetris/tetris_pieces.svg" alt="tetris pieces">
     </div>
-    <div class="item bg-neutral-900 flex items-center justify-center">
-      <img class="object-contain scale-80" src="/assets/img/spread_spectrum/delay_block.svg" alt="SSCLK">
-    </div>
-    <div class="item">
-      <video class="h-full w-full" autoplay loop muted>
+    <a class="item item-link flex items-center justify-center bg-neutral-900" href="/posts/spread_spectrum">
+      <span class="item-link__title">Spread Spectrum Clock Design</span>
+      <img class="item-link__media object-contain scale-80" src="/assets/img/spread_spectrum/delay_block.svg" alt="SSCLK">
+    </a>
+    <a class="item item-link" href="/posts/tetris">
+      <span class="item-link__title">Autonomous Tetris Agent</span>
+      <video class="item-link__media h-full w-full" autoplay loop muted>
         <source src="/assets/img/tetris/tetris.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-    </div>
+    </a>
     <!-- <div class="item row-span-2">
       <img class="h-full" src="/assets/img/venturi/resin_printing.jpeg" alt="venturi resin printing">
     </div> -->
   </div>
 </div>
 
-# Recent Works
+<!-- # Recent Works
 
 {% set items = [
   { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'A MATLAB simulation of a passive compass-gait walker on an incline, using Lagrangian/Newton–Euler dynamics and a simple impact model. This project explores how gait evolves into periodic orbits, bifurcations, and chaos as the slope parameter varies.', url: '/posts/cg_walker'},
@@ -86,4 +91,4 @@ This website is under active development.
 ] %}
 
 {% from "cards.njk" import render_cards %}
-{{ render_cards(items) | safe }}
+{{ render_cards(items) | safe }} -->

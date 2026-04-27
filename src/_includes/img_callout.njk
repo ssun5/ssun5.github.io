@@ -27,7 +27,7 @@
       {%- for callout in contents.callouts -%}
         <div class="callout_label hidden" data-pin-count={{ loop.index }}>
           {%- if callout.title -%}
-          <h3 class="my-0 py-0">{{ callout.title }}</h3>
+          <h2 class="my-0 py-0">{{ callout.title }}</h2>
           {%- endif -%}
           <p>
             {{ callout.label }}
