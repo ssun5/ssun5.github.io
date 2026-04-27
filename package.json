@@ -6,7 +6,7 @@
   "scripts": {
     "build:postcss": "postcss input.css -o public/output.css",
     "build:postcss:prod": "NODE_ENV=production postcss input.css -o public/output.css",
-    "build:11ty": "eleventy",
+    "build:11ty": "NODE_ENV=production eleventy",
     "dev:postcss": "postcss input.css -o public/output.css --watch",
     "dev:11ty": "eleventy --serve",
     "build": "npm-run-all build:postcss:prod build:11ty",

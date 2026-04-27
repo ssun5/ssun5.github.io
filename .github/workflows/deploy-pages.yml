@@ -27,6 +27,8 @@ jobs:
         env:
           # User/org site (e.g. ssun.github.io): served at domain root. Project site: /repo-name/.
           BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
+          # Set in repo Settings → Secrets and variables → Actions (name: GOOGLE_ANALYTICS_ID, value: G-XXXXXXXXXX)
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
