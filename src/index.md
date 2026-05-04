@@ -11,9 +11,7 @@ hi. <br>
 i'm <br>
 shan-wei.
 </h1>
-I'm an engineer working on the Internal Tools & Infrastructure Team at Juul Labs, where I build systems that power product research, testing, and formulation.
-
-My passion is designing technology that feel natural. I love spending time outdoors and I strive to bring a human-centric focus to every project. Here you can check out some of the things I'm working on. Please enjoy. 
+I'm an engineer working on the Internal Tools Team at Juul Labs, where I build infrastructure that power product research, testing, and formulation. My background is in electrical engineering, robotics, and control theory. Here you can check out some of the things I'm working on. Please enjoy. 
 
 This website is under active development.
 </div>
@@ -51,16 +49,18 @@ This website is under active development.
         Your browser does not support the video tag.
       </video>
     </div>
-    <div class="item row-span-2">
-      <img class="h-full scale-115 origin-[0%_90%]" src="/assets/img/cnc/cnc3.jpeg" alt="cnc">
-    </div>
+    <a class="item item-link row-span-2">
+      <span class="item-link__title">Constant Current Stepper Drive (coming soon)</span>
+      <img class="item-link__media h-full scale-115 origin-[0%_90%]" src="/assets/img/cnc/cnc3.jpeg" alt="cnc">
+    </a>
     <a class="item item-link row-span-2 col-span-2" href="/posts/opamp">
       <span class="item-link__title">Operational Amplifier Design</span>
       <img class="item-link__media h-full" src="/assets/img/opamp/opamp_note1.jpeg" alt="opamp notes">
     </a>
-    <div class="item">
-      <img class="h-full scale-120 origin-[10%_40%]" src="/assets/img/mujoco/ur10e.png" alt="ur10e">
-    </div>
+    <a class="item item-link">
+      <span class="item-link__title">MuJoCo UR10e (coming soon)</span>
+      <img class="item-link__media h-full scale-120 origin-[10%_40%]" src="/assets/img/mujoco/ur10e.png" alt="ur10e">
+    </a>
     <div class="item col-span-2 bg-neutral-900 flex items-center justify-center">
       <img class="object-contain" src="/assets/img/tetris/tetris_pieces.svg" alt="tetris pieces">
     </div>
@@ -75,20 +75,20 @@ This website is under active development.
         Your browser does not support the video tag.
       </video>
     </a>
-    <!-- <div class="item row-span-2">
-      <img class="h-full" src="/assets/img/venturi/resin_printing.jpeg" alt="venturi resin printing">
-    </div> -->
+    <a class="item item-link" href="/posts/sys_id">
+      <span class="item-link__title">System Identification</span>
+      <img class="item-link__media h-full" src="/assets/img/PChat_rlocus_zoom.jpg" alt="sys_id">
+    </a>
   </div>
 </div>
 
-<!-- # Recent Works
+## Control System Stuffs
 
 {% set items = [
-  { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'A MATLAB simulation of a passive compass-gait walker on an incline, using Lagrangian/Newton–Euler dynamics and a simple impact model. This project explores how gait evolves into periodic orbits, bifurcations, and chaos as the slope parameter varies.', url: '/posts/cg_walker'},
+  { image: '/assets/img/sys_id/second_order.svg', title: 'Techniques in System Identification', caption: 'Notes on practical techniques of characterizing systems of first-order, second-order, and beyond.', url: '/posts/sys_id'},
   { image: '/assets/img/tetris/tetris_cover.jpg', title: 'Autonomous Tetris Agent', caption: 'In this project, I use reinforcement learning techniques to train a computer agent to play the game of Tetris.', url: '/posts/tetris'},
-  { image: '/assets/img/opamp/opamp_note1.jpeg', title: 'OpAmp Design & Calculations', caption: 'This post covers the design and calculations for a simple 2-stage operational amplifier.', url: '/posts/opamp'},
-  { image: '/assets/img/soft_tracker/device_and_markers.jpg', title: 'Surface Referencing Soft Bodies', caption: 'A low-cost, optical based solution for positional tracking of medical device contact along human skin.', url: '/posts/soft_tracker'}
+  { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'Deriving EOMs with Newton-Euler and Lagrangian mechanics. Observing limit-cycles, bifurcation, and chaos.', url: '/posts/cg_walker'}
 ] %}
 
 {% from "cards.njk" import render_cards %}
-{{ render_cards(items) | safe }} -->
+{{ render_cards(items) | safe }}
