@@ -47,7 +47,7 @@ Y(s) = \frac{K}{s(\tau s + 1)} = \frac{K}{s} - \frac{K\tau}{\tau s + 1} \quad \x
 $$
 </b>
 
-The single pole sits at on the negative real axis. There is no overshoot, no oscillation, and no inflection: the response monotonically approaches $K$.
+The single pole sits on the negative real axis. There is no overshoot, no oscillation, and no inflection: the response monotonically approaches $K$.
 
 <img class="center" src="/assets/img/sys_id/first_order_step.svg" alt="first_order_step">
 
@@ -129,7 +129,7 @@ $$
 z(t) = \ln{(1-\frac{y(t)}{K})}
 $$
 </b>
-For a true first-order system this is a straight line with slope <b>$-1/\tau$</b>. A benefit of this method is that deviation from linearity is a built-in diagnostic — if is curved, the system is not truly first-order. This method is additionally more robust to measurement noise.
+For a true first-order system this is a straight line with slope <b>$-1/\tau$</b>. A benefit of this method is that deviation from linearity is a built-in diagnostic — if $z(t)$ is curved, the system is not truly first-order. This method is additionally more robust to measurement noise.
 </li>
 </ul>
 </li>

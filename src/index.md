@@ -5,7 +5,6 @@ eleventyImport:
   collections: ["post"]
 nav: False
 ---
-<div class="wrapper">
 <h1>
 hi. <br>
 i'm <br>
@@ -14,9 +13,8 @@ shan-wei.
 I'm an engineer working on the Internal Tools Team at Juul Labs, where I build infrastructure that power product research, testing, and formulation. My background is in electrical engineering, robotics, and control theory. Here you can check out some of the things I'm working on. Please enjoy. 
 
 This website is under active development.
-</div>
 
-<div class="w-full">
+<div class="w-[95vw] relative ml-[-47.5vw] mr-[-47.5vw] left-[50%] right-[50%]">
   <div class="bento">
     <div class="item row-span-2">
       <img class="h-full" src="/assets/img/zs_boards.jpeg" alt="makers_mark">
@@ -87,7 +85,8 @@ This website is under active development.
 {% set items = [
   { image: '/assets/img/sys_id/second_order.svg', title: 'Techniques in System Identification', caption: 'Notes on practical techniques of characterizing systems of first-order, second-order, and beyond.', url: '/posts/sys_id'},
   { image: '/assets/img/tetris/tetris_cover.jpg', title: 'Autonomous Tetris Agent', caption: 'In this project, I use reinforcement learning techniques to train a computer agent to play the game of Tetris.', url: '/posts/tetris'},
-  { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'Deriving EOMs with Newton-Euler and Lagrangian mechanics. Observing limit-cycles, bifurcation, and chaos.', url: '/posts/cg_walker'}
+  { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'Deriving EOMs with Newton-Euler and Lagrangian mechanics. Observing limit-cycles, bifurcation, and chaos.', url: '/posts/cg_walker'},
+  { image: '/assets/img/visual_tactile/DIGIT_0.png', title: 'Closing the Loop: Visual-Tactile Feedback for Robotic Grippers', caption: 'Why high-fidelity touch is the next bottleneck for dexterous robots, and what insect compound eyes have to do with it', url: '/posts/visual_tactile'}
 ] %}
 
 {% from "cards.njk" import render_cards %}

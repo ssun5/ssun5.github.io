@@ -129,7 +129,6 @@ A more objective measure is by considering the number of pieces spawned w.r.t. t
 <div>
 <img class="center w-auto" src="/assets/img/tetris/tetris_fourO.svg" alt="tetris optimal ratio">
 <p class="fig_caption">Optimal play on an 8-wide board</p>
-</div>
 <br>
 
 In the <a href="#tetris_video">demo'd case</a> the final ratio at the end of the game is 2.038 (801 spawned pieces, 393 rows cleared). The resulting ratio is close to the ideal value but perhaps still has room for improvement. With more refined training methods and significantly more time spent on training, it may be possible to bring this value closer to the ideal value. 

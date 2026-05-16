@@ -52,7 +52,7 @@
           // Force reflow
           void target.offsetHeight;
           // Re-apply animation
-          target.style.animation = 'highlight-fade 3s ease-out forwards';
+          target.style.animation = 'highlight-fade 4s ease-out forwards';
         }
       }
       
@@ -62,9 +62,9 @@
           restartHighlightAnimation(window.location.hash);
         });
         
-        // Listen for clicks on reference links to handle same-link clicks
+        // Listen for clicks on reference links (and a.cite) to handle same-link clicks
         document.addEventListener('click', (e) => {
-          const link = e.target.closest('a[href^="#ref"]');
+          const link = e.target.closest('a[href^="#ref"], a.cite[href^="#"]');
           if (link) {
             const hash = link.getAttribute('href');
             // Small delay to let the hash change first
@@ -110,6 +110,7 @@
     </div>
     <script defer src="{{ '/assets/js/image-modal.js' | url }}"></script>
     <script defer src="{{ '/assets/js/bento.js' | url }}"></script>
+    <script defer src="{{ '/assets/js/references.js' | url }}"></script>
 </body>
 </html>
 
