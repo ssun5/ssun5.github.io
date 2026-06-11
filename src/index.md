@@ -57,7 +57,10 @@ This website is under active development.
     </a>
     <a class="item item-link">
       <span class="item-link__title">MuJoCo UR10e (coming soon)</span>
-      <img class="item-link__media h-full scale-120 origin-[10%_40%]" src="/assets/img/mujoco/ur10e.png" alt="ur10e">
+      <video class="item-link__media h-full scale-150" autoplay loop muted>
+        <source src="/assets/img/mujoco/pick_and_place1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </a>
     <div class="item col-span-2 bg-neutral-900 flex items-center justify-center">
       <img class="object-contain" src="/assets/img/tetris/tetris_pieces.svg" alt="tetris pieces">
