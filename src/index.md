@@ -90,7 +90,7 @@ This website is under active development.
   { image: '/assets/img/tetris/tetris_cover.jpg', title: 'Autonomous Tetris Agent', caption: 'In this project, I use reinforcement learning techniques to train a computer agent to play the game of Tetris.', url: '/posts/tetris'},
   { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'Deriving EOMs with Newton-Euler and Lagrangian mechanics. Observing limit-cycles, bifurcation, and chaos.', url: '/posts/cg_walker'},
   { image: '/assets/img/visual_tactile/digit_hand.png', title: 'Closing the Loop: Visual-Tactile Feedback for Robotic Grippers', caption: 'Why high-fidelity touch is the next bottleneck for dexterous robots, and what insect compound eyes have to do with it', url: '/posts/visual_tactile'},
-  { image: '/assets/img/mujoco/mid_frame.png', title: '6-DoF Robotic Arm Automation', caption: 'Pick-and-place application with a 6-DoF. MuJoCo/dm_control for path-planning, simulation, and policy development', url: '/posts/mujoco_ur10e'}
+  { image: '/assets/img/mujoco/mid_frame.png', title: '6-DoF Robotic Arm Automation', caption: 'Planner-policy framework for pick and place on UR10e/UR5e arms, from physics-accurate simulation to real hardware deployment for research and laboratory automation.', url: '/posts/mujoco_ur10e'}
 ] %}
 
 {% from "cards.njk" import render_cards %}
