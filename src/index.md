@@ -55,8 +55,8 @@ This website is under active development.
       <span class="item-link__title">Operational Amplifier Design</span>
       <img class="item-link__media h-full" src="/assets/img/opamp/opamp_note1.jpeg" alt="opamp notes">
     </a>
-    <a class="item item-link">
-      <span class="item-link__title">MuJoCo UR10e (coming soon)</span>
+    <a class="item item-link" href="/posts/mujoco_ur10e">
+      <span class="item-link__title">Contact-Aware Pick-and-Place</span>
       <video class="item-link__media h-full scale-150" autoplay loop muted>
         <source src="/assets/img/mujoco/pick_and_place1.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -89,7 +89,8 @@ This website is under active development.
   { image: '/assets/img/sys_id/second_order.svg', title: 'Techniques in System Identification', caption: 'Notes on practical techniques of characterizing systems of first-order, second-order, and beyond.', url: '/posts/sys_id'},
   { image: '/assets/img/tetris/tetris_cover.jpg', title: 'Autonomous Tetris Agent', caption: 'In this project, I use reinforcement learning techniques to train a computer agent to play the game of Tetris.', url: '/posts/tetris'},
   { image: '/assets/img/cg_walker/x1_orbit_fine.png', title: 'Bipedal Compass-Gait Walker', caption: 'Deriving EOMs with Newton-Euler and Lagrangian mechanics. Observing limit-cycles, bifurcation, and chaos.', url: '/posts/cg_walker'},
-  { image: '/assets/img/visual_tactile/digit_hand.png', title: 'Closing the Loop: Visual-Tactile Feedback for Robotic Grippers', caption: 'Why high-fidelity touch is the next bottleneck for dexterous robots, and what insect compound eyes have to do with it', url: '/posts/visual_tactile'}
+  { image: '/assets/img/visual_tactile/digit_hand.png', title: 'Closing the Loop: Visual-Tactile Feedback for Robotic Grippers', caption: 'Why high-fidelity touch is the next bottleneck for dexterous robots, and what insect compound eyes have to do with it', url: '/posts/visual_tactile'},
+  { image: '/assets/img/mujoco/mid_frame.png', title: '6-DoF Robotic Arm Automation', caption: 'Pick-and-place application with a 6-DoF. MuJoCo/dm_control for path-planning, simulation, and policy development', url: '/posts/mujoco_ur10e'}
 ] %}
 
 {% from "cards.njk" import render_cards %}
