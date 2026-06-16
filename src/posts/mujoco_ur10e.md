@@ -3,7 +3,7 @@ title: Contact-Aware Pick and Place with a 6-DoF Arm
 date: '2026-06-01'
 ---
 <h1 class="mt-0 pt-0 about_title">{{ title }}</h1>
-<div id="tetris_video">
+<div id="pick_and_place">
 {%- from 'video.njk' import render_video %}
 {{ render_video("/assets/img/mujoco/pick_and_place1.mp4") }}
 </div>
@@ -14,7 +14,14 @@ I am developing a real-world automated pick-and-place application utilizing a 6-
 ## Approach
 The core architecture is a three-layer hierarchy: a collision-free motion planner (RRT-Connect) handles gross arm movement, a phase-aware sequential task framework decomposes the pick-and-place into discrete stages each with its own completion conditions and sub-policy, and residual reinforcement learning is reserved for contact-rich phases (grasp and placement) where classical planning breaks down. This design deliberately minimizes the scope of what RL needs to learn, reducing sample complexity and making sim-to-real transfer more tractable.
 ## Technical Stack
-MuJoCo, `dm_control`, RRT-Connect path planning, multi-seed inverse kinematics, sequential task decomposition, PD control with feedforward gravity compensation, reinforcement learning.
+MuJoCo, `dm_control`, RRT-Connect path planning, multi-seed inverse kinematics, sequential task decomposition, PID control with feedforward gravity compensation, reinforcement learning.
+
+<div id="obstacle_avoidance">
+{%- from 'video.njk' import render_video %}
+{{ render_video("/assets/img/mujoco/obstacle_avoidance8.mp4") }}
+</div>
+<p class="fig_caption">Obstacle avoidance with RRT-Connect</p>
+<br>
 
 ## Status
 This project is in active development. Completed components:
