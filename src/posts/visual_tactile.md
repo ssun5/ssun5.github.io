@@ -153,7 +153,7 @@ None of this is hypothetical at the optics layer. Hu et al. and Dai et al. have 
 What's missing is a sustained engineering campaign that puts these pieces together at the scale of a robotic finger.
 
 ## Other useful reference points
-Soft on-lens sensors. Getschmann and Echtler's LensLeech is a soft silicone cylinder that sits on top of any camera lens and acts itself as a close-focus optic; deformations of the silicone are read out as marker-pattern shifts.17 It is built for HCI, not robotics, but the underlying idea — the deformable element is the lens — suggests a direction in which the elastomer skin and the imaging optics of a tactile sensor merge into one component, removing yet another layer in the thickness stack.
+Soft on-lens sensors. Getschmann and Echtler's LensLeech is a soft silicone cylinder that sits on top of any camera lens and acts itself as a close-focus optic; deformations of the silicone are read out as marker-pattern shifts.<a class="cite" href="#getschmann2023"></a> It is built for HCI, not robotics, but the underlying idea — the deformable element is the lens — suggests a direction in which the elastomer skin and the imaging optics of a tactile sensor merge into one component, removing yet another layer in the thickness stack.
 
 Motion sensing without imaging. Zhang et al.'s 3D-printed compound-eye motion sensor uses simple light-intensity sensors rather than CMOS arrays, exploiting the flicker effect to detect distance and speed of a moving target with under 2% error.<a class="cite" href="#zhang2020"></a> This study specifically demonstrates how a ommatidia-based tactile sensor could grant low-bandwidth, low-latency response for slip detection.
 
